@@ -20,11 +20,8 @@ public:
         // }
         // return 0;
         
-        //Using Sorting
+        //Using Sorting ---O(nlogn)
         int n=nums.size();
-        if(n==1 || n==2){
-            return nums[0];
-        }
         int count=1;
         sort(nums.begin(), nums.end());
         for(int i=0,j=1;i<n&&j<n;){
@@ -42,6 +39,6 @@ public:
                 return nums[i];
             }
         }
-        return 0;
+        return nums[0];
     }
 };
