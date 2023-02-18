@@ -28,18 +28,12 @@ public:
         //Using 3 Pointers
         int l=0,m=0,h=nums.size()-1;
         while(m<=h){
-            if(nums[m]==1){
+            if(nums[m]==1)
                 m++;
-            }
-            else if(nums[m]==2){
-                swap(nums[m],nums[h]);
-                h--;
-            }
-            else{
-                swap(nums[l],nums[m]);
-                l++;
-                m++;
-            }
+            else if(nums[m]==2)
+                swap(nums[m],nums[h--]);
+            else
+                swap(nums[l++],nums[m++]);
         }
         
     }
