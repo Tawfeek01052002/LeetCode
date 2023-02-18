@@ -6,12 +6,11 @@ public:
         for(int j=0;i<n&&j<n;j++){
             if(nums[j]!=0){
                 nums[i]=nums[j];
+                if(i!=j){
+                    nums[j]=0;
+                }
                 i++;
             }
-        }
-        while(i<n){
-            nums[i]=0;
-            i++;
         }
     }
 };
