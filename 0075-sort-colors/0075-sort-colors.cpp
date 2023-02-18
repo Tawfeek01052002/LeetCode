@@ -3,7 +3,7 @@ public:
     void sortColors(vector<int>& nums) {
         
         //Using Sort function
-        sort(nums.begin(),nums.end());
+        // sort(nums.begin(),nums.end());
         
         //Using Counting
         int zero=0,one=0,two=0;
