@@ -54,16 +54,22 @@ public:
         
         //multiply element by -1 to check visited or not and then again multiply by -1 to remove modification
         
+        //Modifying Array
+        int dupli=0;
         for(int i=0;i<n;i++){
             int index=abs(nums[i])-1;
             if(nums[index]<0){
-                return abs(nums[i]);
+                dupli=abs(nums[i]);
+                break;
             }
             else{
                 nums[index]*=-1;
             }
         }
-        return -1;
-
+        //remove modification
+        for(int i=0;i<n;i++){
+            nums[i]=abs(nums[i]);
+        }
+        return dupli;
     }
 };
