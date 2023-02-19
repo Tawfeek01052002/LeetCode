@@ -21,23 +21,31 @@ public:
         // return -1;
         
         // Using Cyclic Sort
-        for(int i=0;i<n;){
-            int index=nums[i];
-            if(i==(index-1)){
-                i++;
+        // for(int i=0;i<n;){
+        //     int index=nums[i];
+        //     if(i==(index-1)){
+        //         i++;
+        //     }
+        //     else if(nums[index-1]!=nums[i]){
+        //         swap(nums[index-1],nums[i]);
+        //     }
+        //     else {
+        //         return nums[i];
+        //     }
+        // }             
+        // return -1;
+        
+        // Using bool temp array
+        vector<bool> temp(n,true);
+        for(int i=0;i<n;i++){
+            int index=nums[i]-1;
+            if(temp[index]){
+                temp[index]=false;
             }
-            else if(nums[index-1]!=nums[i]){
-                swap(nums[index-1],nums[i]);
-            }
-            else {
+            else{
                 return nums[i];
             }
         }
-        //2 2 2 2 2
-        //1 3 4 2 2
-        //1 3 4 2 2
-        //1 4 3 2 2 
-             
         return -1;
 
     }
