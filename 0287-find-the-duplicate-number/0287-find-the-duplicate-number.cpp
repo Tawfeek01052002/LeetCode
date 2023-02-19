@@ -37,6 +37,12 @@ public:
         // }             
         // return -1;
         
+        //OR --Cyclic sort
+        while(nums[0]!=nums[nums[0]]){
+            swap(nums[0],nums[nums[0]]);
+        }
+        return nums[0];
+        
         
         // Using bool temp array -- O(n) time -- O(n) space
         // vector<bool> temp(n,true);
@@ -55,21 +61,21 @@ public:
         //multiply element by -1 to check visited or not and then again multiply by -1 to remove modification
         
         //Modifying Array
-        int dupli=0;
-        for(int i=0;i<n;i++){
-            int index=abs(nums[i])-1;
-            if(nums[index]<0){
-                dupli=abs(nums[i]);
-                break;
-            }
-            else{
-                nums[index]*=-1;
-            }
-        }
-        //remove modification
-        for(int i=0;i<n;i++){
-            nums[i]=abs(nums[i]);
-        }
-        return dupli;
+        // int dupli=0;
+        // for(int i=0;i<n;i++){
+        //     int index=abs(nums[i])-1;
+        //     if(nums[index]<0){
+        //         dupli=abs(nums[i]);
+        //         break;
+        //     }
+        //     else{
+        //         nums[index]*=-1;
+        //     }
+        // }
+        // //remove modification
+        // for(int i=0;i<n;i++){
+        //     nums[i]=abs(nums[i]);
+        // }
+        // return dupli;
     }
 };
