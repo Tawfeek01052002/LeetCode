@@ -2,6 +2,8 @@ class Solution {
 public:
     int findDuplicate(vector<int>& nums) {
         int n=nums.size();
+        
+        //Brute Force ---O(n*n);
         // for(int i=0;i<n;i++){
         //     for(int j=i+1;j<n;j++){
         //         if(nums[i]==nums[j]){
@@ -20,7 +22,7 @@ public:
         // }
         // return -1;
         
-        // Using Cyclic Sort
+        // Using Cyclic Sort -- O(n) time --- O(1) space--Modifying the  array 
         // for(int i=0;i<n;){
         //     int index=nums[i];
         //     if(i==(index-1)){
@@ -35,15 +37,30 @@ public:
         // }             
         // return -1;
         
-        // Using bool temp array
-        vector<bool> temp(n,true);
+        
+        // Using bool temp array -- O(n) time -- O(n) space
+        // vector<bool> temp(n,true);
+        // for(int i=0;i<n;i++){
+        //     int index=nums[i]-1;
+        //     if(temp[index]){
+        //         temp[index]=false;
+        //     }
+        //     else{
+        //         return nums[i];
+        //     }
+        // }
+        // return -1;
+        
+        
+        //multiply element by -1 to check visited or not and then again multiply by -1 to remove modification
+        
         for(int i=0;i<n;i++){
-            int index=nums[i]-1;
-            if(temp[index]){
-                temp[index]=false;
+            int index=abs(nums[i])-1;
+            if(nums[index]<0){
+                return abs(nums[i]);
             }
             else{
-                return nums[i];
+                nums[index]*=-1;
             }
         }
         return -1;
