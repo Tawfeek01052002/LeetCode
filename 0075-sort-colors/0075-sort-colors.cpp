@@ -26,14 +26,14 @@ public:
         
         //Dutch National Flag 
         //Using 3 Pointers
-        int l=0,m=0,h=nums.size()-1;
-        while(m<=h){
-            if(nums[m]==1)
-                m++;
-            else if(nums[m]==2)
-                swap(nums[m],nums[h--]);
+        int low=0,mid=0,high=nums.size()-1;
+        while(mid<=high){
+            if(nums[mid]==0)
+                swap(nums[mid++],nums[low++]);
+            else if(nums[mid]==2)
+                swap(nums[mid],nums[high--]);
             else
-                swap(nums[l++],nums[m++]);
+                mid++;
         }
         
     }
