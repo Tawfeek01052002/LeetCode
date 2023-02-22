@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    //Here i am using pivot Logic to find the minimum number
+    //traversing array by comparing nums[mid] with nums[0];
     int findMin(vector<int>& nums) {
         int n=nums.size();
         int s=0;
