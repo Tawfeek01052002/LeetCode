@@ -6,7 +6,7 @@ public:
         // return sqrt(x);
         
         //using binary search
-        
+        // searching between 1 to the x
         int s=1;
         int e=x;
         int mid=s+(e-s)/2;
