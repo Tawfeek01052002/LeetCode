@@ -1,7 +1,7 @@
 class Solution {
 public:
-    int peakIndexInMountainArray(vector<int>& arr) {
-        int s=0;
+    int findPeakIndex(vector<int> &arr){
+         int s=0;
         int e=arr.size()-1;
         int m=s+(e-s)/2;
         while(s<e){
@@ -13,6 +13,7 @@ public:
         }
         return s;
     }
+    int peakIndexInMountainArray(vector<int>& arr) {
+        return findPeakIndex(arr);
+    }
 };
-
-// 0 2 10 5 4 3 1
