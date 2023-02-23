@@ -36,10 +36,13 @@ public:
     
     int search(vector<int>& arr, int target) {
         int pivot=findpivot(arr);
+        cout<<"Pivot = "<<pivot;
         if(arr[pivot]<=target && target<=arr[arr.size()-1]){
+            //Search in right array
             return binarySearch(arr,target,pivot,arr.size()-1);
         }
         else{
+            //Search in left array
             return binarySearch(arr,target,0,pivot-1);
         }
         return -1;
