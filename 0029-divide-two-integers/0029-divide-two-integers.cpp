@@ -1,6 +1,8 @@
 class Solution {
 public:
     int divide(int dividend, int divisor) {
+        
+        //Handling edge test cases that is INT_MIN and INT_MAX with 1 and -1
         long temp=dividend;
         if(abs(temp)>INT_MAX && abs(divisor)==1){
             if ((dividend < 0 && divisor < 0) || (dividend > 0 && divisor > 0))
@@ -8,6 +10,8 @@ public:
             else
                 return dividend;
         }
+        
+        //General Test Cases including -ve 
         long s = 0;
         long e = abs(dividend);
         long mid = s + (e - s) / 2;
