@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //Similar as of Stack of Java
     string removeDuplicates(string s) {
         string ans="";
         int i=0;
