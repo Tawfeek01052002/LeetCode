@@ -29,7 +29,7 @@ class Solution
         //     }
         // }
         
-        //Using Couting
+        //Using Counting the number of Occurence of all three numbers
         int z,o,t;
         z=o=t=0;
         for(int i=0;i<n;i++){
