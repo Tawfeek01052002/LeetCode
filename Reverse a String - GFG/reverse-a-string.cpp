@@ -31,8 +31,8 @@ int main() {
 //User function Template for C++
 
 string reverseWord(string str){
-    
-  //Your code here
+  
+  //Using 2 Pointers- one is at start and another is at end and swap them
   int s=0;
   int e=str.length()-1;
   while(s<e){
