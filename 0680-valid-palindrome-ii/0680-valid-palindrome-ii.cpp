@@ -1,8 +1,6 @@
 class Solution {
 public:
-    bool isPalindrome(string str){
-        int s=0;
-        int e=str.length()-1;
+    bool isPalindrome(string str,int s,int e){
         while(s<e){
             if(str[s]!=str[e]){
                 return false;
@@ -20,7 +18,7 @@ public:
         int end=s.length()-1;
         while(start<end){
             if(s[start]!=s[end]){
-                return isPalindrome(s.substr(start,end-start))||isPalindrome(s.substr(start+1,end-start));
+                return isPalindrome(s,start,end-1)||isPalindrome(s,start+1,end);
             }
             start++;
             end--;
