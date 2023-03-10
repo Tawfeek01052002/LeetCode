@@ -17,6 +17,8 @@ public:
                 min_diff=diff;
             }
         }
+        
+        //Edge Test case VVVVIMP
         int lastdiff=minutes[0]+1440-minutes[n-1];
         if(lastdiff<min_diff){
             min_diff=lastdiff;
