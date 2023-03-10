@@ -12,6 +12,9 @@ public:
         }
         return true;
     }
+    
+    // checking left substring and rightsubstring is palindrome or not 
+    // when characters is not match
     bool validPalindrome(string s) {
         int start=0;
         int end=s.length()-1;
