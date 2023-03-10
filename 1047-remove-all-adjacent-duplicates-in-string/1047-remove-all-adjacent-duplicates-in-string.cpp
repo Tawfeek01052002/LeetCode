@@ -1,15 +1,16 @@
 class Solution {
 public:
+    //Similar as of Stack of Java
     string removeDuplicates(string s) {
-        string ans;
-        int n=s.length();
-        for(int i=0;i<n;i++){
-            if(ans.length()>0 && s[i]==ans[ans.length()-1]){
+        string ans="";
+        int i=0;
+        
+        while(i<s.length()){
+            if(ans.length()>0 && ans[ans.length()-1]==s[i])
                 ans.pop_back();
-            }
-            else{
+            else
                 ans.push_back(s[i]);
-            }
+            i++;
         }
         return ans;
     }
