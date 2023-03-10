@@ -1,3 +1,4 @@
+#include<math.h>
 class Solution {
 public:
     int findMinDifference(vector<string>& time) {
@@ -20,6 +21,8 @@ public:
         
         //Edge Test case VVVVIMP
         int lastdiff=minutes[0]+1440-minutes[n-1];
+        int lastdiff2=minutes[n-1]-minutes[0];
+        lastdiff=min(lastdiff,lastdiff2);
         if(lastdiff<min_diff){
             min_diff=lastdiff;
         }
