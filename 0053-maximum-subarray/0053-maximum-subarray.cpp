@@ -1,5 +1,9 @@
 class Solution {
 public:
+    
+    //Using Sliding Window Approach 
+    //Checking is sum<0  then reset the sum and after adding
+    // element check if that sum is maximum or not
     int maxSubArray(vector<int>& arr) {
         
         int n=arr.size();
