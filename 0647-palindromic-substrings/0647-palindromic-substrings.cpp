@@ -56,10 +56,10 @@ public:
     {
         int n = str1.length();
         int count = 0;
-        for (int i = 0,j=i; i < n && j<n; i++,j++)
+        for (int i = 0; i < n ; i++)
         {
-            count+=isPalindrome(str1,i,j);
-            count+=isPalindrome(str1,i,j+1);
+            count+=isPalindrome(str1,i,i);
+            count+=isPalindrome(str1,i,i+1);
         }
         return count;
     }
