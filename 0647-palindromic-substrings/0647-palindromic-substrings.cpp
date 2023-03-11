@@ -31,7 +31,9 @@ public:
     //     return count;
     // }
     
-    
+    //we are check that substring(i,j) is palindrome or not if yes
+    // then i-- and j++ again check with this
+    // two cases comes of even length substring and odd length substring
     int isPalindrome(string str,int i,int j){
         int count=0;
         int n=str.length();
@@ -49,6 +51,7 @@ public:
     }
     
     //Optimised Approach
+    
     int countSubstrings(string str1)
     {
         int n = str1.length();
