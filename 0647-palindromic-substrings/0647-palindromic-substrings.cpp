@@ -55,14 +55,8 @@ public:
         int count = 0;
         for (int i = 0,j=i; i < n && j<n; i++,j++)
         {
-            count+=isPalindrome(str1,i,j);
+            count+=isPalindrome(str1,i,j)+isPalindrome(str1,i,j+1);
         }
-        // cout<<count;
-        for (int i = 0,j=i+1; i < n && j<n; i++,j++)
-        {
-            count+=isPalindrome(str1,i,j);
-        }
-        // cout<<count;
         return count;
     }
     
