@@ -8,6 +8,8 @@ public:
         else
             return false;
     }
+    
+    //Using 2 pointer approach s=0  and e=n-1
     string reverseVowels(string str) {
         int s=0;
         int e=str.length()-1;
