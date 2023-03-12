@@ -2,8 +2,8 @@ class Solution {
 public:
     // T.C.=O(N)  S.C.=O(1)
     bool isVowel(char ch){
-        ch=(char)tolower(ch);
-        if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u')
+        if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u' || ch=='A' ||
+          ch=='E' || ch=='I' || ch=='O' || ch=='U') 
             return true;
         else
             return false;
@@ -12,12 +12,10 @@ public:
         int s=0;
         int e=str.length()-1;
         while(s<e){
-            if(!isVowel(str[s])){
+            if(!isVowel(str[s]))
                 s++;
-            }
-            else if(!isVowel(str[e])){
+            else if(!isVowel(str[e]))
                 e--;
-            }
             else{
                 swap(str[s],str[e]);
                 s++;
