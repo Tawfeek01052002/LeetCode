@@ -20,24 +20,13 @@ public:
         // return ans;
         
         
-        // string ans;
-        // int n=str.size();
-        // for(int i=0;i<n;i++){
-        //     char curr=str[0][i];
-        //     for(int j=0;j<n;j++){
-        //         if(curr!=str[j][i])
-        //             return ans;
-        //     }
-        //     ans.push_back(curr);
-        // }
-        // return ans;
-        
         string ans;
+        int n=strs.size();
         int i=0;
         while(true){
             char curr=0;
             for(auto str:strs){
-                if(i>=str.size()){
+                if(i>=str.length()){
                     curr=0;
                     break;
                 }
@@ -56,6 +45,31 @@ public:
             i++;
         }
         return ans;
+        
+        // string ans;
+        // int i=0;
+        // while(true){
+        //     char curr=0;
+        //     for(auto str:strs){
+        //         if(i>=str.size()){
+        //             curr=0;
+        //             break;
+        //         }
+        //         if(curr==0){
+        //             curr=str[i];
+        //         }
+        //         if(curr!=str[i]){
+        //             curr=0;
+        //             break;
+        //         }
+        //     }
+        //     if(curr==0){
+        //         break;
+        //     }
+        //     ans.push_back(curr);
+        //     i++;
+        // }
+        // return ans;
         
     }
 };
