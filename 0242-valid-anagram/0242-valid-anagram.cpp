@@ -25,7 +25,7 @@ public:
         }
         sort(s.begin(),s.end());
         sort(t.begin(),t.end());
-        return s.compare(t)==0?true:false;
+        return s==t?true:false;
         
     }
 };
