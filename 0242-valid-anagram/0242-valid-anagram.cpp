@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // T.C.=O(N+M)  S.C.==O(1)
     bool isAnagram(string s, string t) {
         // int arr[256]={0};
         // int sn=s.length();
