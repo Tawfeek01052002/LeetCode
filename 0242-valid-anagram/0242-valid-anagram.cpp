@@ -20,9 +20,6 @@ public:
         // return true;
         
         //Using sorting T.C.=O(nlogn) S.C.=O(1)
-        if(s.length()!=t.length()){
-            return false;
-        }
         sort(s.begin(),s.end());
         sort(t.begin(),t.end());
         return s==t?true:false;
