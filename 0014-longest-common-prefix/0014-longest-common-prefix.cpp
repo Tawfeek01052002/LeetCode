@@ -20,38 +20,15 @@ public:
         // return ans;
         
         
-        string ans;
-        int n=strs.size();
-        int i=0;
-        while(true){
-            char curr=0;
-            for(auto str:strs){
-                if(i>=str.length()){
-                    curr=0;
-                    break;
-                }
-                if(curr==0){
-                    curr=str[i];
-                }
-                if(curr!=str[i]){
-                    curr=0;
-                    break;
-                }
-            }
-            if(curr==0){
-                break;
-            }
-            ans.push_back(curr);
-            i++;
-        }
-        return ans;
-        
+        // Love Babber Solution 
+        // T.C.=O(N^2)
         // string ans;
+        // int n=strs.size();
         // int i=0;
         // while(true){
         //     char curr=0;
         //     for(auto str:strs){
-        //         if(i>=str.size()){
+        //         if(i>=str.length()){
         //             curr=0;
         //             break;
         //         }
@@ -70,6 +47,22 @@ public:
         //     i++;
         // }
         // return ans;
+        
+        
+        //Using Sorting
+        if(strs.size()==0)
+            return "";
+        sort(strs.begin(),strs.end());
+        string first=strs[0];
+        string last=strs[strs.size()-1];
+        int i=0;
+        while(i<first.length()){
+            if(first[i]!=last[i]){
+                break;
+            }
+            i++;
+        }
+        return first.substr(0,i);
         
     }
 };
