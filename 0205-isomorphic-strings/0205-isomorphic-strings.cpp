@@ -2,15 +2,23 @@ class Solution {
 public:
     bool isIsomorphic(string s, string t) {
         int n=s.length();
-        int m=t.length();
+        char hash[256]={0};
+        bool isMapped[256]={0};
         for(int i=0;i<n;i++){
-            for(int j=i;j<n;j++){
-                if(s[i]==s[j] && t[i]!=t[j] || t[i]==t[j] && s[i]!=s[j]){
-                        return false;
-                    }
-                
+            if(hash[s[i]]==0 && isMapped[t[i]]==0){
+                hash[s[i]]=t[i];
+                isMapped[t[i]]=true;
+            }
+            if(hash[s[i]]!=t[i]){
+                return false;
+            }
+        }
+        for(int i=0;i<n;i++){
+            if(hash[s[i]]!=t[i]){
+                return false;
             }
         }
         return true;
+        
     }
 };
