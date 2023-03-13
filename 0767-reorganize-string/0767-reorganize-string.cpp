@@ -1,5 +1,10 @@
 class Solution {
 public:
+    // steps:
+    // 1. counting freq of characters
+    // 2. finding max character with count
+    // 3. put the characters with +2 diff
+    // 4. checking if max_char is not fitting in the length
     string reorganizeString(string s) {
         int heap[26]={0};
         int n=s.length();
@@ -12,7 +17,7 @@ public:
         for(int i=0;i<26;i++){
             if(heap[i]>max_count){
                 max_count=heap[i];
-                max_char=i;//Storing chararacter index
+                max_char=i;
             }
         }
         
