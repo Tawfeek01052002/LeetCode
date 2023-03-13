@@ -13,11 +13,6 @@ public:
                 return false;
             }
         }
-        for(int i=0;i<n;i++){
-            if(hash[s[i]]!=t[i]){
-                return false;
-            }
-        }
         return true;
         
     }
