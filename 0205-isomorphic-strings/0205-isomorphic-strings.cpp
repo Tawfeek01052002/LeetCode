@@ -1,5 +1,6 @@
 class Solution {
 public:
+    // T.C.=O(N) S.C.=O(1)
     bool isIsomorphic(string s, string t) {
         int n=s.length();
         char hash[256]={0};
