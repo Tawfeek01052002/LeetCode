@@ -65,6 +65,7 @@ public:
         
         
         // Optimised Solution Using array of 256 size to check that anagram or not
+        // T.C=O(n*k)   S.C.=O(n*k)
         map<std::array<int,256>,vector<string>> ans;
         for(auto str:strs){
             std::array<int,256> arr={0};
