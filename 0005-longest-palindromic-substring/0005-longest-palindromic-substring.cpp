@@ -17,18 +17,15 @@ public:
     }
     string longestPalindrome(string s) {
         string max;
-        long maxi=0;
         int n=s.length();
         for(int i=0;i<n;i++){
             string odd=longest(s,i,i,n);
-            if(odd.length()>maxi){
+            if(odd.length()>max.length()){
                 max=odd;
-                maxi=max.length();
             }
             string even=longest(s,i,i+1,n);
-            if(even.length()>maxi){
+            if(even.length()>max.length()){
                 max=even;
-                maxi=max.length();
             }
         }
         return max;
