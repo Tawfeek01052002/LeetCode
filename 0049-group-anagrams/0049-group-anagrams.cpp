@@ -8,22 +8,22 @@ public:
     // we use map to store pair of sorted string with their vector of 
     // string
     
-    // T.C=O(n*mlogm)   S.C.=O(N)
+    // T.C=O(n*mlogm)   S.C.=O(n*m)
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
-        unordered_map<string,vector<string>> maps;
-        int n=strs.size();
-        for(int i=0;i<n;i++){
-            string temp=strs[i];
-            sort(temp.begin(),temp.end());
-            maps[temp].push_back(strs[i]);
+//         unordered_map<string,vector<string>> maps;
+//         int n=strs.size();
+//         for(int i=0;i<n;i++){
+//             string temp=strs[i];
+//             sort(temp.begin(),temp.end());
+//             maps[temp].push_back(strs[i]);
           
-        }
+//         }
         
-        vector<vector<string>> ans;
-        for(auto key:maps){
-            ans.push_back(key.second);
-        }
-        return ans;
+//         vector<vector<string>> ans;
+//         for(auto key:maps){
+//             ans.push_back(key.second);
+//         }
+//         return ans;
         
         
         // T.C=O(n*klogk)  where n=length of vector k=length of maxi string
@@ -61,5 +61,25 @@ public:
 //            ans.push_back(temp); 
 //         }
 //         return ans;
+        
+        
+        
+        // Optimised Solution Using array of 256 size to check that anagram or not
+        map<std::array<int,256>,vector<string>> ans;
+        for(auto str:strs){
+            std::array<int,256> arr={0};
+            for(int j=0;j<str.length();j++){
+                arr[str[j]-'a']++;
+            }    
+            ans[arr].push_back(str);
+        }
+        
+        vector<vector<string>> vec;
+        for(auto key:ans){
+            vec.push_back(key.second);
+        }
+        return vec;
+        
+        
     }
 };
