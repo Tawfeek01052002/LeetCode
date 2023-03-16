@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    //Run Length encoding 
+    //T.C.=O(N)  S.C.=O(1)
     int compress(vector<char>& chars) {
         int n=chars.size();
         char curr=chars[0];
