@@ -3,15 +3,18 @@ public:
     int compress(vector<char>& chars) {
         int n=chars.size();
         char curr=chars[0];
-        int j,k,count=1;
-        for(j=1,k=0;j<n;j++){
+        int k=0,count=1;
+        
+        for(int j=1;j<n;j++){
             if(curr!=chars[j]){
                 chars[k++]=curr;
                 if(count>1){
-                    string temp=to_string(count);
-                    for(char ch:temp){
-                        chars[k++]=ch;   
+                    int start=k;
+                    while(count){
+                        chars[k++]=(count%10)+'0';
+                        count/=10;
                     }
+                    reverse(chars.begin()+start,chars.begin()+k);
                 }
                 count=1;
                 curr=chars[j];
@@ -22,14 +25,14 @@ public:
         }
         chars[k++]=curr;
         if(count>1){
-            string temp=to_string(count);
-            for(char ch:temp){
-                chars[k++]=ch;   
+            int start=k;
+            while(count){
+                chars[k++]=(count%10)+'0';
+                count/=10;
             }
+            reverse(chars.begin()+start,chars.begin()+k);
         }
-        while(k<chars.size())
-            chars.pop_back();
         
-        return chars.size();
+        return k;
     }
 };
