@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    //We Can also use map but avoid use of map
+    // T.C.=O(N) S.C.=O(1)
     int mapped(char ch){
         switch(ch){
             case 'M':return 1000;
