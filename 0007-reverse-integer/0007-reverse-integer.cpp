@@ -7,7 +7,9 @@ public:
                 return 0;
             }
             int rem=x%10;
+            // cout<<"rem = "<<rem<<endl;
             reverse=reverse*10+rem;
+            // cout<<"reverse = "<<reverse<<endl;
             x/=10;
         }
         return reverse;
