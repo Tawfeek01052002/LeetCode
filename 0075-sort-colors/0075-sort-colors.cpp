@@ -28,15 +28,30 @@ public:
 
         // Dutch National Flag
         // Using 3 Pointers
-        int low = 0, mid = 0, high = nums.size() - 1;
-        while (mid <= high)
-        {
-            if (nums[mid] == 0)
-                swap(nums[mid++], nums[low++]);
-            else if (nums[mid] == 2)
-                swap(nums[mid], nums[high--]);
-            else
+        // int low = 0, mid = 0, high = nums.size() - 1;
+        // while (mid <= high)
+        // {
+        //     if (nums[mid] == 0)
+        //         swap(nums[mid++], nums[low++]);
+        //     else if (nums[mid] == 2)
+        //         swap(nums[mid], nums[high--]);
+        //     else
+        //         mid++;
+        // }
+        
+        
+        
+        int start=0;
+        int mid=0;
+        int end=nums.size()-1;
+        while(mid<=end){
+            if(nums[mid]==1)
                 mid++;
+            else if(nums[mid]==0)
+                swap(nums[mid++],nums[start++]);
+            else 
+                swap(nums[end--],nums[mid]);
         }
+        
     }
 };
