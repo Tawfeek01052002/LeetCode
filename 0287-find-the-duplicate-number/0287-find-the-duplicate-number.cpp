@@ -37,10 +37,10 @@ public:
         // return -1;
         
         //OR --Cyclic sort
-        while(nums[0]!=nums[nums[0]]){
-            swap(nums[0],nums[nums[0]]);
-        }
-        return nums[0];
+        // while(nums[0]!=nums[nums[0]]){
+        //     swap(nums[0],nums[nums[0]]);
+        // }
+        // return nums[0];
         
         
         // Using bool temp array -- O(n) time -- O(n) space
@@ -76,5 +76,19 @@ public:
         //     nums[i]=abs(nums[i]);
         // }
         // return dupli;
+        
+        
+        //Revise
+        int n=nums.size();
+        vector<int> temp(nums.size(),0);
+        for(int i=0;i<n;i++){
+            temp[nums[i]-1]++;
+        }
+        for(int i=0;i<=n;i++){
+            if(temp[i]>1)
+                return i+1;
+        }
+        return 0;
+        
     }
 };
