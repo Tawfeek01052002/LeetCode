@@ -89,19 +89,27 @@ public:
         // }
         // return 0;
         
-        int i=0;
-        int n=nums.size();
-        while(i<n)
-        {
-            int index=abs(nums[i]);
-            if(nums[index]<0)
-                return index;
-            else
-                nums[index]*=-1;
+//         int i=0;
+//         int n=nums.size();
+//         while(i<n)
+//         {
+//             int index=abs(nums[i]);
+//             if(nums[index]<0)
+//                 return index;
+//             else
+//                 nums[index]*=-1;
             
-            i++;
+//             i++;
+//         }
+//         return 0;
+        
+        int i=0;
+        while(nums[nums[i]]!=nums[i]){
+            swap(nums[nums[i]],nums[i]);
         }
-        return 0;
+        return nums[0];
+        
+        
         
         
         
