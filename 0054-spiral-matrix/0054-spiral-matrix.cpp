@@ -1,46 +1,40 @@
 class Solution {
 public:
-    vector<int> spiralOrder(vector<vector<int>>& arr) {
-        vector<int> ans;
-    int startingRow = 0;
-    int startingCol = 0;
-    int endingRow = arr.size() - 1;
-    int endingCol = arr[0].size() - 1;
-    int count = 0;
-    int total_element = arr[0].size() * arr.size();
-    while (count < total_element)
-    {
-        // Printing starting row
-        for (int j = startingCol; j <= endingCol && count<total_element; j++)
-        {
-            ans.push_back(arr[startingRow][j]);
-            count++;
+    vector<int> spiralOrder(vector<vector<int>>& matrix) {
+        
+        int row=matrix.size();
+        int col=matrix[0].size();
+        int rowstart=0;
+        int rowend=row-1;
+        int colstart=0;
+        int colend=col-1;
+        vector<int> arr;
+        int nele=row*col;
+        int count=0;
+        while(count<nele){
+            for(int i=colstart;i<=colend && count<nele;i++){
+                arr.push_back(matrix[rowstart][i]);
+                count++;
+            }  
+            rowstart++;
+            for(int i=rowstart;i<=rowend && count<nele;i++){
+                arr.push_back(matrix[i][colend]);
+                count++;
+            } 
+            colend--;
+            for(int i=colend;i>=colstart && count<nele;i--){
+                arr.push_back(matrix[rowend][i]);
+                count++;
+                
+            } 
+            rowend--;
+            for(int i=rowend;i>=rowstart && count<nele;i--){
+                arr.push_back(matrix[i][colstart]);
+                count++;
+                
+            }  
+            colstart++;
         }
-        startingRow++;
-        // Printing ending col
-        for (int j = startingRow; j <= endingRow && count<total_element; j++)
-        {
-            ans.push_back(arr[j][endingCol]);
-            count++;
-        }
-        endingCol--;
-
-        // Printing ending row
-        for (int j = endingCol; j >= startingCol && count<total_element; j--)
-        {
-            ans.push_back(arr[endingRow][j]);
-            count++;
-        }
-        endingRow--;
-
-        // Printing starting col
-        for (int j = endingRow; j >= startingRow && count<total_element; j--)
-        {
-            ans.push_back(arr[j][startingCol]);
-            count++;
-        }
-        startingCol++;
-    }
-    return ans;   
+        return arr;
     }
 };
