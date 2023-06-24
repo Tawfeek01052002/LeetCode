@@ -1,49 +1,50 @@
 class Solution {
 public:
-    
-    //First we Found Pivot the apply binary search on left of pivot (0,pivot-1)
-    // if index ==-1 then search in right array (pivot,arr.size()-1)
-    // else return -1
-    int binarySearch(vector<int> arr,int target,int s,int e){
-        int mid=s+(e-s)/2;
-        while(s<=e){
+    int binarySearch(vector<int> arr,int start,int end,int target){
+        int mid=0;
+        while(start<=end){
+            mid=start+(end-start)/2;
             if(arr[mid]==target)
                 return mid;
-            else if(arr[mid]>target){
-                e=mid-1;
-            }
-            else{
-                s=mid+1;
-            }
-            mid=s+(e-s)/2;
+            else if(arr[mid]>target)
+                end=mid-1;
+            else
+                start=mid+1;
         }
         return -1;
     }
-    
-    int findpivot(vector<int>nums){
-         int s=0;
-        int e=nums.size()-1;
-        int mid=s+(e-s)/2;
-        while(s<e){
-            if(nums[mid]>=nums[0])
-                s=mid+1;
-            else
-                e=mid;
-            mid=s+(e-s)/2;
+    int pivotElement(vector<int> arr){
+        int start=0;
+        int end=arr.size()-1;
+        int mid=0;
+        while(start<end){
+            mid=start+(end-start)/2;
+            if(mid<end && arr[mid]>arr[mid+1]){
+                return mid;
+            }
+            else if(mid>start && arr[mid]<arr[mid-1]){
+                return mid-1;
+            }
+            else if(arr[start]>arr[mid]){
+                end=mid-1;
+            }
+            else{
+                start=mid+1;
+            }  
         }
-        return s;
+        return arr.size()-1;
     }
     
     int search(vector<int>& arr, int target) {
-        int pivot=findpivot(arr);
+        int pivot=pivotElement(arr);
         cout<<"Pivot = "<<pivot;
-        if(arr[pivot]<=target && target<=arr[arr.size()-1]){
-            //Search in right array
-            return binarySearch(arr,target,pivot,arr.size()-1);
+        if(arr[0]<=target){
+            //Search in left array
+            return binarySearch(arr,0,pivot,target);
         }
         else{
-            //Search in left array
-            return binarySearch(arr,target,0,pivot-1);
+            //Search in Right array
+            return binarySearch(arr,pivot+1,arr.size()-1,target);
         }
         return -1;
     }
