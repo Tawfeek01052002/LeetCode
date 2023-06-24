@@ -39,11 +39,9 @@ public:
         int pivot=pivotElement(arr);
         cout<<"Pivot = "<<pivot;
         if(arr[0]<=target){
-            //Search in left array
             return binarySearch(arr,0,pivot,target);
         }
         else{
-            //Search in Right array
             return binarySearch(arr,pivot+1,arr.size()-1,target);
         }
         return -1;
