@@ -1,6 +1,10 @@
 class Solution {
 public:
     int mySqrt(int x) {
+        
+        //using inbuilt function
+        // return sqrt(x);
+        
         //using binary search
         int start=1,mid;
         int end=x;
