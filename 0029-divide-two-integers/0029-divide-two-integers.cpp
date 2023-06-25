@@ -2,41 +2,34 @@ class Solution {
 public:
     int divide(int dividend, int divisor) {
         
-        //Handling edge test cases that is INT_MIN and INT_MAX with 1 and -1
-        long temp=dividend;
-        if(abs(temp)>INT_MAX && abs(divisor)==1){
-            if ((dividend < 0 && divisor < 0) || (dividend > 0 && divisor > 0))
+        if(dividend == INT_MIN && abs(divisor)== 1)
+            if(divisor<0)
                 return INT_MAX;
             else
                 return dividend;
-        }
+            
         
-        //General Test Cases including -ve 
-        long s = 0;
-        long e = abs(dividend);
-        long mid = s + (e - s) / 2;
-        long ans = 0;
-        while (s <= e)
-        {
-            // Perfect Solution
-            if (abs(mid * divisor) == abs(dividend))
-            {
-                ans = mid;
+        long start=0;
+        long end=abs(dividend);
+        long mid=0;
+        long quo=0;
+        while(start<=end){
+            mid=start+(end-start)/2;         
+            if(abs(mid*divisor)==abs(dividend)){
+                quo=mid;
                 break;
             }
-            else if (abs(mid * divisor) < abs(dividend))
-            {
-                // right search
-                ans = mid;
-                s = mid + 1;
+            else if(abs(mid*divisor)<abs(dividend)){
+                quo=mid;
+                start=mid+1;
             }
             else
-                e = mid - 1; // Left search
-            mid = s + (e - s) / 2;
+                end=mid-1;
         }
         if ((dividend < 0 && divisor < 0) || (dividend > 0 && divisor > 0))
-            return (int)ans;
+            return (int)quo;
         else
-            return (int)-ans;
-        }
+            return (int)-quo;
+        
+    }
 };
