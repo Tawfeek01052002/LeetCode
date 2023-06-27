@@ -12,12 +12,10 @@ public:
                 index=mid;
                 end=mid-1;
             }
-            else if(arr[mid]<x){
+            else if(arr[mid]<x)
                 start=mid+1;
-            }
-            else{
+            else
                 end=mid-1;
-            }
         }
         return index;
     }
@@ -33,12 +31,10 @@ public:
                 index=mid;
                 start=mid+1;
             }
-            else if(arr[mid]<x){
+            else if(arr[mid]<x)
                 start=mid+1;
-            }
-            else{
+            else
                 end=mid-1;
-            }
         }
         return index;
     }
