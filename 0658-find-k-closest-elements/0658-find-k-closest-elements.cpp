@@ -12,12 +12,7 @@ public:
             }
             else end--;
         }
-        // Declaring new vector 
-        vector<int> vect2; 
-  
-        // Copying vector by copy function 
-        copy(arr.begin()+start, arr.begin()+start+k, back_inserter(vect2)); 
-        return vect2;
+        return vector<int>(arr.begin()+start, arr.begin()+end+1);
         
     }
 };
