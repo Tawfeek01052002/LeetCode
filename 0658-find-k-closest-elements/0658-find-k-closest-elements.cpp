@@ -1,23 +1,48 @@
 class Solution {
 public:
-    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
-
-        int s=0;
-        int e=arr.size()-1;
-        while(s<e){
-            int mid=s+(e-s)/2;
-            if(arr[mid]==x){
-                e=mid;
-                break;
-            }
+    int binarySearch(vector<int> arr,int x){
+        int start=0;
+        int end=arr.size()-1;
+        int index=arr.size();
+        while(start<end){
+            int mid=start+(end-start)/2;
+            if(arr[mid]==x)
+                return mid;
             else if(arr[mid]<x)
-                s=mid+1;
+                start=mid+1;
             else
-                e=mid;
-        }        
+                end=mid;
+        }
+        return end;
+    }
+    
+    vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+        
+        
+        //Using 2 pointers  
+        // T.C.=O(n-k) S.C.=O(1)
+//         int n=arr.size();
+//         int start=0;
+//         int end=n-1;
+        
+//         while(end-start>=k){
+//             if(abs(arr[start]-x)>abs(arr[end]-x)){
+//                 start++;
+//             }
+//             else end--;
+//         }
+//         return vector<int>(arr.begin()+start, arr.begin()+end+1);
+        
+        
+        //Slightly better approach same as previous using 2 pointers
+        // step1: find smallest element which is greter than x
+        // after that expand the start and end after comparing
         int n=arr.size();
-        int start=e-1;
-        int end=e;
+        int up=binarySearch(arr,x);
+        int start=up-1;
+        int end=up;
+        cout<<"Start = "<<start<<endl;
+        cout<<"End = "<<end<<endl;
         while(start>=0 && end<n && k>0){
             if(abs(arr[start]-x)<=abs(arr[end]-x)){
                 start--;
