@@ -18,8 +18,6 @@ public:
         int n=arr.size();
         int start=e-1;
         int end=e;
-        cout<<"Start = "<<start<<endl;
-        cout<<"End = "<<end<<endl;
         while(start>=0 && end<n && k>0){
             if(abs(arr[start]-x)<=abs(arr[end]-x)){
                 start--;
