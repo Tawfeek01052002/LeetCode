@@ -35,6 +35,8 @@ public:
         
         
         //Slightly better approach same as previous using 2 pointers
+        // step1: find smallest element which is greter than x
+        // after that expand the start and end after comparing
         int n=arr.size();
         int up=binarySearch(arr,x);
         int start=up-1;
