@@ -1,50 +1,50 @@
 class Solution {
 public:
+    
+    //First Position
+    int lowerBound(vector<int> arr, int x){
+        int start=0;
+        int end=arr.size()-1;
+        int index=-1;
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            if(arr[mid]==x){
+                index=mid;
+                end=mid-1;
+            }
+            else if(arr[mid]<x){
+                start=mid+1;
+            }
+            else{
+                end=mid-1;
+            }
+        }
+        return index;
+    }
+    
+    //Last Position
+    int upperBound(vector<int> arr, int x){
+        int start=0;
+        int end=arr.size()-1;
+        int index=-1;
+        while(start<=end){
+            int mid=start+(end-start)/2;
+            if(arr[mid]==x){
+                index=mid;
+                start=mid+1;
+            }
+            else if(arr[mid]<x){
+                start=mid+1;
+            }
+            else{
+                end=mid-1;
+            }
+        }
+        return index;
+    }
+    
+    
     vector<int> searchRange(vector<int>& nums, int target) {
-        int first=findFirst(nums,target);
-        int last=findLast(nums,target);
-        return {first,last};
-    }
-    
-    int findFirst(vector<int> &nums,int target){
-        int index=-1;
-        int s=0;
-        int e=nums.size()-1;
-        int mid=s+(e-s)/2;
-        while(s<=e){
-            if(nums[mid]==target){
-                index=mid;
-                e=mid-1;
-            }
-            else if(nums[mid]>target){
-                e=mid-1;
-            }
-            else{
-                s=mid+1;
-            }
-            mid=s+(e-s)/2;
-        }
-        return index;
-    }
-    
-    int findLast(vector<int> &nums,int target){
-        int index=-1;
-        int s=0;
-        int e=nums.size()-1;
-        int mid=s+(e-s)/2;
-        while(s<=e){
-            if(nums[mid]==target){
-                index=mid;
-                s=mid+1;
-            }
-            else if(nums[mid]>target){
-                e=mid-1;
-            }
-            else{
-                s=mid+1;
-            }
-            mid=s+(e-s)/2;
-        }
-        return index;
+        return {lowerBound(nums,target),upperBound(nums,target)};
     }
 };
