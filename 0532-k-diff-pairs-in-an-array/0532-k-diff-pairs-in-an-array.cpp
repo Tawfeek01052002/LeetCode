@@ -62,9 +62,8 @@ public:
         set<pair<int,int>> s;
         sort(nums.begin(),nums.end());
         for(int i=0;i<n-1;i++){
-            int index=binarySearch(nums,i+1,n-1,k+nums[i]);
-            if(index!=-1){
-                s.insert({nums[i],nums[index]});
+            if(binarySearch(nums,i+1,n-1,k+nums[i])!=-1){
+                s.insert({nums[i],nums[i]+k});
             }
         }
         return s.size();
