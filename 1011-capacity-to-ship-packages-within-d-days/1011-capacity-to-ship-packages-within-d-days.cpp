@@ -1,5 +1,7 @@
 class Solution {
 public:
+    
+    //Checking that this minimum weight is possible or not
     int isPossibleSolution(vector<int>& weights, int days,int ans){
         int c=1;
         int weightSum=0;
@@ -21,6 +23,8 @@ public:
         return true;
     }
     
+    
+    //Using Book Allocation Problem
     int shipWithinDays(vector<int>& weights, int days) {
         int start=0;
         int end=accumulate(weights.begin(),weights.end(),0);
