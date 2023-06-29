@@ -15,6 +15,7 @@ public:
         return false;
     }
     
+    //Similar to - Aggressive Cow
     int maxDistance(vector<int>& pos, int m) {
         
         sort(pos.begin(),pos.end());
