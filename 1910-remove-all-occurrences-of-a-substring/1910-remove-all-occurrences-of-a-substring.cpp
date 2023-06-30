@@ -1,14 +1,13 @@
 class Solution {
 public:
-    
-    //Using find function to search the starting index of the
-    // part string and removing it with erase function
     string removeOccurrences(string s, string part) {
-        int n=part.length();
-        int index=s.find(part);
-        while(index!=string::npos){
-            s.erase(index,n);
+        int index;
+        while(true){
             index=s.find(part);
+            if(index==string::npos){
+                return s;
+            }
+            s.erase(index,part.length());
         }
         return s;
     }
