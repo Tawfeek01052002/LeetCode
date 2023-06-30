@@ -17,14 +17,14 @@ public:
         // T.C.=O(n)  S.C.=O(1)
         int i=0;
         int j=1;
-        while(j<s.length()){
+        int n=s.length();
+        while(j<n){
             if(i>=0 && s[i]==s[j]){
                 i--;
                 j++;
             }
-            else{
+            else
                 s[++i]=s[j++];
-            }
         }
         return s.substr(0,i+1);
         
