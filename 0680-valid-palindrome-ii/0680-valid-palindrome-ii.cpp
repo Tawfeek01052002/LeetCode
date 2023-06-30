@@ -18,9 +18,7 @@ public:
             start++;
             end--;
         }
-        if(isPalindrome(s,start+1,end) || isPalindrome(s,start,end-1)){
-            return true;
-        }
-        return false;
+        return isPalindrome(s,start+1,end) || isPalindrome(s,start,end-1);
+
     }
 };
