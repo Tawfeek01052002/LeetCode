@@ -1,9 +1,10 @@
 class Solution {
 public:
     static bool cmp(int a,int b){
-        if(to_string(a)+to_string(b)>to_string(b)+to_string(a)){
+        string s1=to_string(a);
+        string s2=to_string(b);
+        if(s1+s2>s2+s1)
             return true;
-        }
         return false ;
     }
     
