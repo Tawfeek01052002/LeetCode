@@ -1,31 +1,20 @@
-#include<math.h>
 class Solution {
 public:
     int findMinDifference(vector<string>& time) {
-        vector<int> minutes;
-        for(int i=0;i<time.size();i++){
+        int n=time.size();
+        vector<int> arr;
+        for(int i=0;i<n;i++){
             int hh=stoi(time[i].substr(0,2));
-            int mm=stoi(time[i].substr(3,2));
-            int total_min=hh*60+mm;
-            minutes.push_back(total_min);
+            int mm=stoi(time[i].substr(3,5));
+            int minutes=hh*60+mm;
+            arr.push_back(minutes);
         }
-        sort(minutes.begin(),minutes.end());
-        int min_diff=INT_MAX;
-        int n=minutes.size();
-        for(int i=1;i<n;i++){
-            int diff=minutes[i]-minutes[i-1];
-            if(diff<min_diff){
-                min_diff=diff;
-            }
+        sort(arr.begin(),arr.end());
+        int mini=INT_MAX;
+        for(int i=1;i<arr.size();i++){
+            mini=min(mini,arr[i]-arr[i-1]);
         }
-        
-        //Edge Test case VVVVIMP
-        int lastdiff=minutes[0]+1440-minutes[n-1];
-        int lastdiff2=minutes[n-1]-minutes[0];
-        lastdiff=min(lastdiff,lastdiff2);
-        if(lastdiff<min_diff){
-            min_diff=lastdiff;
-        }
-        return min_diff;
+        mini=min(mini,1440+arr[0]-arr[arr.size()-1]);
+        return mini;
     }
 };
