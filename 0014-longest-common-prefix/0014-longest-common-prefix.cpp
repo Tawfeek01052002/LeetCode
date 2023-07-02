@@ -3,7 +3,7 @@ public:
     string longestCommonPrefix(vector<string>& str) {
         
         // T.C=O(N^2)
-        //brute force approach not allowed
+        // brute force approach not allowed
         // string ans=str[0];
         // int n=str.size();
         // int j=0;
@@ -50,30 +50,19 @@ public:
         
         
         //Using Sorting
-        // if(strs.size()==0)
-        //     return "";
-        // sort(strs.begin(),strs.end());
-        // string first=strs[0];
-        // string last=strs[strs.size()-1];
-        // int i=0;
-        // while(i<first.length()){
-        //     if(first[i]!=last[i]){
-        //         break;
-        //     }
-        //     i++;
-        // }
-        // return first.substr(0,i);
-        
-        
-        string ans=str[0];
-        int n=str.size();
-        for(int i=1;i<n;i++){
-            int index=0;
-            while(index<ans.length() &&index<str[i].length() && ans[index]==str[i][index]){
-                index++;
+        if(str.size()==0)
+            return "";
+        sort(str.begin(),str.end());
+        string first=str[0];
+        string last=str[str.size()-1];
+        int i=0;
+        while(i<first.length()){
+            if(first[i]!=last[i]){
+                break;
             }
-            ans=ans.substr(0,index);
+            i++;
         }
-        return ans;
+        return first.substr(0,i);
+        
     }
 };
