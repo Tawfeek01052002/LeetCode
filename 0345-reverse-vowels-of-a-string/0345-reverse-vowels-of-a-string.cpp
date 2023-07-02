@@ -1,29 +1,23 @@
 class Solution {
 public:
-    // T.C.=O(N)  S.C.=O(1)
-    bool isVowel(char ch){
-        if(ch=='a' || ch=='e' || ch=='i' || ch=='o' || ch=='u' || ch=='A' ||
-          ch=='E' || ch=='I' || ch=='O' || ch=='U') 
+    bool isVowel(char c){
+        if(toupper(c)=='A' ||toupper(c)=='E'  ||toupper(c)=='I'  || toupper(c)=='O' || toupper(c)=='U'  )
             return true;
-        else
-            return false;
+        return false;
     }
-    
-    //Using 2 pointer approach s=0  and e=n-1
-    string reverseVowels(string str) {
-        int s=0;
-        int e=str.length()-1;
-        while(s<e){
-            if(!isVowel(str[s]))
-                s++;
-            else if(!isVowel(str[e]))
-                e--;
-            else{
-                swap(str[s],str[e]);
-                s++;
-                e--;
+    string reverseVowels(string s) {
+        int start=0;
+        int end=s.length()-1;
+        while(start<=end){
+            if(!isVowel(s[start])){
+                start++;
             }
+            else if(!isVowel(s[end])){
+                end--;
+            }
+            else
+                swap(s[start++],s[end--]);
         }
-        return str;
+        return s;
     }
 };
