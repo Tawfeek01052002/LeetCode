@@ -8,9 +8,8 @@ public:
                 arr[s[i]]=t[i];
                 ismapped[t[i]]=true;
             }
-            if(arr[s[i]]!=t[i]){
+            if(arr[s[i]]!=t[i])
                 return false;
-            }
         }
         return true;
     }
