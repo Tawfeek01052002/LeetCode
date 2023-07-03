@@ -1,20 +1,17 @@
 class Solution {
 public:
-    // T.C.=O(N) S.C.=O(1)
     bool isIsomorphic(string s, string t) {
-        int n=s.length();
-        char hash[256]={0};
-        bool isMapped[256]={0};
-        for(int i=0;i<n;i++){
-            if(hash[s[i]]==0 && isMapped[t[i]]==0){
-                hash[s[i]]=t[i];
-                isMapped[t[i]]=true;
+        char arr[256]={0};
+        bool ismapped[256]={false};
+        for(int i=0;i<s.length();i++){
+            if(arr[s[i]]==0 && ismapped[t[i]]==0){
+                arr[s[i]]=t[i];
+                ismapped[t[i]]=true;
             }
-            if(hash[s[i]]!=t[i]){
+            if(arr[s[i]]!=t[i]){
                 return false;
             }
         }
         return true;
-        
     }
 };
