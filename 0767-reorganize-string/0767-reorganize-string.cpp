@@ -1,9 +1,17 @@
 class Solution {
 public:
+     // steps:
+    // 1. counting freq of characters
+    // 2. finding max character with count
+    // 3. put the characters with +2 diff
+    // 4. checking if max_char is not fitting in the length
     
     //storing maximum count based on that checking if max>n+1/2  then not possible 
     //else store character on differnce of i+2
+    
     string reorganizeString(string s) {
+        
+        //T.C.=O(n) S.C.=O(1)
         int n=s.length();
         int arr[26]={0};
         char maxOcc=s[0];
@@ -39,5 +47,38 @@ public:
             }
         }
         return ans;
+        
+        //Using Priority Queue
+        //T.C.=? S.C.=?
+//         int n=s.length();
+//         int heap[26]={0};
+//         priority_queue<pair<int, char>> que;
+//         for(int i=0;i<n;i++){
+//             heap[s[i]-'a']++;
+//             if(heap[s[i]-'a']>(s.size()+1)/2){
+//                 return "";
+//             }
+//         }
+//         for(int i=0;i<26;i++){
+//             if(heap[i]){
+//                 que.push({heap[i],(i+'a')});
+//             }
+//         }
+    
+//         int i=0;
+//         pair<int,char> prev=que.top();
+//         char ch=prev.second;
+//         que.pop();
+//         s[i++]=ch;
+        
+//         while(!que.empty()){
+//             pair<int,char> curr=que.top();
+//             char ch1=curr.second;
+//             que.pop();
+//             s[i++]=ch1;
+//             if(--prev.first)que.push(prev);
+//             prev=curr;
+//         }
+//         return s;
     }
 };
