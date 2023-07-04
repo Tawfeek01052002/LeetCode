@@ -1,41 +1,38 @@
 class Solution {
 public:
-    
-    //Run Length encoding 
-    //T.C.=O(N)  S.C.=O(1)
+       
     int compress(vector<char>& chars) {
-        int n=chars.size();
-        char curr=chars[0];
-        int k=0,count=1;
-        
-        for(int j=1;j<n;j++){
-            if(curr!=chars[j]){
-                chars[k++]=curr;
+        char prev=chars[0];
+        int count=1;
+        int index=0;
+        for(int i=1;i<chars.size();i++){
+            if(prev==chars[i])
+                count++;
+            else{
+                chars[index++]=prev;
                 if(count>1){
-                    int start=k;
-                    while(count){
-                        chars[k++]=(count%10)+'0';
+                    int start=index;
+                    while(count!=0){
+                        chars[index++]=(count%10)+'0';
                         count/=10;
                     }
-                    reverse(chars.begin()+start,chars.begin()+k);
+                    int end=index;
+                    reverse(chars.begin()+start,chars.begin()+end);
                 }
+                prev=chars[i];
                 count=1;
-                curr=chars[j];
-            }
-            else{
-                count++;
             }
         }
-        chars[k++]=curr;
+        chars[index++]=prev;
         if(count>1){
-            int start=k;
-            while(count){
-                chars[k++]=(count%10)+'0';
-                count/=10;
-            }
-            reverse(chars.begin()+start,chars.begin()+k);
+            int start=index;
+                    while(count!=0){
+                        chars[index++]=(count%10)+'0';
+                        count/=10;
+                    }
+                    int end=index;
+                    reverse(chars.begin()+start,chars.begin()+end);
         }
-        
-        return k;
+        return index;
     }
 };
