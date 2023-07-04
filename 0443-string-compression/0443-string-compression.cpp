@@ -1,6 +1,11 @@
 class Solution {
 public:
-       
+      
+    // using two pointer approach
+    // main test case when count>10  ---> store in reverse then reverse it
+    // good solution
+    //Compression algorithm-- run length encoding
+    // T.C.=O(n) S.C.=O(1)
     int compress(vector<char>& chars) {
         char prev=chars[0];
         int count=1;
