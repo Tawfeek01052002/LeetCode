@@ -1,25 +1,27 @@
 class Solution {
 public:
     string convert(string s, int numRows) {
-        if(numRows==1){
+        if(numRows==1 ||s.length()==1){
             return s;
         }
-        int n=s.length();
-        int k=0;
-        vector<string> zigzag(numRows);
-        while(k<n){
-            for(int i=0;i<numRows && k<n;i++){
-                zigzag[i].push_back(s[k++]);
+        vector<string> ans(numRows);
+        int row=0;
+        int index=0;
+        while(index<s.length()){
+            while(index<s.length() && row<numRows){
+                ans[row++].push_back(s[index++]);
             }
-
-            for(int i=numRows-2;i>0 && k<n;i--){
-                zigzag[i].push_back(s[k++]);
+            
+            row=numRows-2;
+            while(index<s.length() && row>=0){
+               ans[row--].push_back(s[index++]);
             }
+            row=1;
         }
-        string ans;
-        for(string str:zigzag){
-            ans+=str;
+        string out="";
+        for(string str:ans){
+            out+=str;
         }
-        return ans;
+        return out;
     }
 };
