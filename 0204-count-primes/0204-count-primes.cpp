@@ -20,26 +20,22 @@ public:
         // return count;
         
         //sieve of eratosthenes
+        
         if(n<2)
             return 0;
         vector<bool> arr(n,true);
         arr[0]=false;
         arr[1]=false;
-        for(int i=2;i<n;i++){
-            if(!arr[i])
-                continue;
-                
-            int j=2;
-            while((i*j)<n){
-                arr[i*j]=false; 
-                j++;
-            }
-        }
-        
         int count=0;
-        for(int i=0;i<n;i++){
-            if(arr[i])
-                count++;
+        for(int i=2;i<n;i++){
+            if(arr[i]){
+                count++;   
+                int j=2;
+                while((i*j)<n){
+                    arr[i*j]=false; 
+                    j++;
+                }
+            }
         }
         return count;
     }
