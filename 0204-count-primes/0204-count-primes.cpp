@@ -20,6 +20,8 @@ public:
         // return count;
         
         //sieve of eratosthenes
+        //the array is called sieve
+        //T.C.=O(nloglogn) S.C.=O(n)
         if(n<=1)
             return 0;
         vector<bool> prime(n,true);
