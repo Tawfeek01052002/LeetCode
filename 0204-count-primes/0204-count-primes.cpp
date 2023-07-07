@@ -20,20 +20,18 @@ public:
         // return count;
         
         //sieve of eratosthenes
-        
-        if(n<2)
+        if(n<=1)
             return 0;
-        vector<bool> arr(n,true);
-        arr[0]=false;
-        arr[1]=false;
+        vector<bool> prime(n,true);
         int count=0;
+        prime[0]=prime[1]=false;
         for(int i=2;i<n;i++){
-            if(arr[i]){
-                count++;   
-                int j=2;
-                while((i*j)<n){
-                    arr[i*j]=false; 
-                    j++;
+            if(prime[i]){
+                count++;
+                int j=i*2;
+                while(j<n){
+                    prime[j]=false;
+                    j+=i;
                 }
             }
         }
