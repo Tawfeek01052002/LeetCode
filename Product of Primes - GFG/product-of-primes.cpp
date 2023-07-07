@@ -29,6 +29,13 @@ public:
     }
     
     //using segmented sieve
+    //steps:
+    //1. create a sieve to get prime numbers till root R because after that no digit will divide the number 
+    // like 110 -130 root=11 because 12*12=144 >R to get prime till 11 from 0
+    //2.create dummy array of size R-L+1 and mark all them with true
+    //3.get first factor of all prime which we got from step 1 and mark multiple of this is dummy array
+    //on index j-L to maintain 0 based indexing
+    //4. after that note which is prime by checking true after that multiply all that primes
     long long primeProduct(long long L, long long R){
         // code here
         
