@@ -10,17 +10,13 @@ class Solution
     int gcd(int A, int B) 
 	{ 
 	    // code here
-	    while(1){
-	        if(!A)
-	            return B;
-	        else if(!B)
-	            return A;
+	    while(A && B){
 	        if(A<=B)
 	            B=B-A;
 	        else
 	            A=A-B;
 	    }
-	    return 0;
+	    return A?A:B;
 	      
 	} 
 };
