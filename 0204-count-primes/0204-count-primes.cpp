@@ -9,10 +9,10 @@ public:
         for(int i=2;i<n;i++){
             if(prime[i]){
                 count++;
-                int j=2;
-                while(j*i<n){
-                    prime[j*i]=false;
-                    j++;
+                int j=i*2;
+                while(j<n){
+                    prime[j]=false;
+                    j+=i;
                 }
             }
         }
