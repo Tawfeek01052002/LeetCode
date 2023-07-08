@@ -22,12 +22,14 @@ public:
         //sieve of eratosthenes
         //the array is called sieve
         //T.C.=O(nloglogn) S.C.=O(n)
-        if(n<=1)
+        if(n<=2)
             return 0;
         vector<bool> prime(n,true);
         int count=0;
         prime[0]=prime[1]=false;
         for(int i=2;i<n;i++){
+            if(!(prime[i]&1))
+                continue;
             if(prime[i]){
                 count++;
                 int j=i*2;
@@ -37,6 +39,7 @@ public:
                 }
             }
         }
+        prime[2]=true;
         return count;
     }
 };
