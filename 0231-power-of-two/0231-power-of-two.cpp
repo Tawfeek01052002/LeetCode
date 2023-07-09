@@ -5,6 +5,6 @@ public:
             return true;
         if(n&1==1 || n==0)
             return false;
-        return isPowerOfTwo(n>>1);
+        return isPowerOfTwo(n/2);
     }
 };
