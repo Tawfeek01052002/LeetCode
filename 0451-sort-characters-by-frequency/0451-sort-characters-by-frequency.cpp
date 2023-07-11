@@ -4,7 +4,7 @@ public:
         return a.second>b.second;
     }
     string frequencySort(string s) {
-        vector<pair<char,int>> arr(256,{' ',0});
+        vector<pair<char,int>> arr(123,{' ',0});
         
         for(int i=0;i<s.length();i++){
             arr[s[i]].second+=1;
