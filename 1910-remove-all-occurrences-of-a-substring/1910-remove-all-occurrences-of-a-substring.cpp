@@ -36,7 +36,7 @@ public:
         // N/M total call 
         //O(N/M * N*M)==O(N^2)
         
-        //T.C.=O(N^2)
+        //T.C.=O(N^2) S.C.=O(N/M)
         removeOcc(s,part);
         return s;
     }
