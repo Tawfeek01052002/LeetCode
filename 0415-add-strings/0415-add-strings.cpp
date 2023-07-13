@@ -1,6 +1,6 @@
 class Solution {
 public:
-    string getSumString(string& num1,int& n1,string& num2,int& n2,int carry,string& ans){
+    string getSumString(string& num1,int n1,string& num2,int n2,int carry,string& ans){
         
         //base case
         if(n1<0 && n2<0){
@@ -16,9 +16,7 @@ public:
         int sum=p1+p2+carry;
         int digit=sum%10;
         carry=sum/10;
-        int t1=n1-1;
-        int t2=n2-1;
-        ans=getSumString(num1,t1,num2,t2,carry,ans);
+        ans=getSumString(num1,n1-1,num2,n2-1,carry,ans);
         ans.push_back(digit+'0');
         return ans;
         
