@@ -1,13 +1,14 @@
 class Solution {
 public:
-    string getSumString(string& num1,int n1,string& num2,int n2,int carry,string& ans){
+    void getSumString(string& num1,int n1,string& num2,int n2,int carry,string& ans){
         
         //base case
         if(n1<0 && n2<0){
             if(carry>0){
-                return string(1,carry+'0');
+                ans.push_back(carry+'0');
+                return;
             }
-            return "";
+            return ;
         }
             
         //ek case
@@ -16,9 +17,8 @@ public:
         int sum=p1+p2+carry;
         int digit=sum%10;
         carry=sum/10;
-        ans=getSumString(num1,n1-1,num2,n2-1,carry,ans);
+        getSumString(num1,n1-1,num2,n2-1,carry,ans);
         ans.push_back(digit+'0');
-        return ans;
         
     }
     string addStrings(string num1, string num2) {
@@ -57,6 +57,7 @@ public:
         int n1=num1.length()-1;
         int n2=num2.length()-1;
         string ans="";
-        return getSumString(num1,n1,num2,n2,0,ans);
+        getSumString(num1,n1,num2,n2,0,ans);
+        return ans;
     }
 };
