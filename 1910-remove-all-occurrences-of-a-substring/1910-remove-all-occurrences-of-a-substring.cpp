@@ -6,10 +6,14 @@ public:
             return;
         }
         else{
-            s.erase(index,t.length());
+            // s.erase(index,t.length());
+            //this erase function can also be done as
+            string left=s.substr(0,index);
+            string right=s.substr(index+t.size(),s.size());
+            s=left+right;
+            removeOcc(s,t);
         }
         
-        removeOcc(s,t);
     }
     string removeOccurrences(string& s, string& part) {
         // int index=s.find(part);
