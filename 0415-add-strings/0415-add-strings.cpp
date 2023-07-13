@@ -5,9 +5,7 @@ public:
         //base case
         if(n1<0 && n2<0){
             if(carry>0){
-                string ans;
-                ans.push_back(carry+'0');
-                return ans;
+                return string(1,carry+'0');
             }
             return "";
         }
