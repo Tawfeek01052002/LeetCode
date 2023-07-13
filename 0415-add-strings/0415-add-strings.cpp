@@ -1,6 +1,6 @@
 class Solution {
 public:
-    string getSumString(string& num1,int n1,string& num2,int n2,int carry){
+    string getSumString(string& num1,int& n1,string& num2,int& n2,int carry){
         
         //base case
         if(n1<0 && n2<0){
@@ -18,7 +18,9 @@ public:
         int sum=p1+p2+carry;
         int digit=sum%10;
         carry=sum/10;
-        string ans= getSumString(num1,n1-1,num2,n2-1,carry);
+        int t1=n1-1;
+        int t2=n2-1;
+        string ans= getSumString(num1,t1,num2,t2,carry);
         ans.push_back(digit+'0');
         return ans;
         
@@ -58,7 +60,6 @@ public:
         //using recursion
         int n1=num1.length()-1;
         int n2=num2.length()-1;
-        
         return getSumString(num1,n1,num2,n2,0);
     }
 };
