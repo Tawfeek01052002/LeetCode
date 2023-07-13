@@ -22,6 +22,21 @@ public:
         //     index=s.find(part);
         // }
         // return s;
+        
+        //Recursion
+        // find=O(NM)
+        //left=O(N)
+        //Right=O(N)
+        //concat=O(N)
+        //Totoal=O(NM)+O(N)+O(N)
+        
+        //now for recursive call
+        // n=s.length
+        //m=part.length
+        // N/M total call 
+        //O(N/M * N*M)==O(N^2)
+        
+        //T.C.=O(N^2)
         removeOcc(s,part);
         return s;
     }
