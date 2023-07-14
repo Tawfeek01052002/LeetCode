@@ -1,15 +1,15 @@
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) {
-        int maxprofit=0;
-        int minele=prices[0];
-        for(int i=0;i<prices.size();i++){
-            minele=min(minele,prices[i]);
-            if((prices[i]-minele)>maxprofit){
-                maxprofit=prices[i]-minele;
-            }
-        }
+    int maxProfit(vector<int>& prices) { 
         
-        return maxprofit;
+        //T.C.=O(n) S.C.=O(1)
+        int diff=0;
+        int minSofar=prices[0];
+        for(int i=1;i<prices.size();i++){
+            if(prices[i]<minSofar)
+                minSofar=prices[i];
+            diff=max(diff,prices[i]-minSofar);
+        }
+        return diff;
     }
 };
