@@ -8,7 +8,7 @@ public:
         for(int i=1;i<prices.size();i++){
             if(prices[i]<minSofar)
                 minSofar=prices[i];
-            diff=max(diff,prices[i]-minSofar);
+            else diff=max(diff,prices[i]-minSofar);
         }
         return diff;
     }
