@@ -35,6 +35,12 @@ public:
         {1, "One"},
     };
     
+    
+    //Assume Split The Num into three part
+    // eg.->123456
+    //Part one =123
+    //Part Second= thousand,hundred,million,billion
+    //Part third=remaining part 456
     string numberToWords(int num) {
         if(num==0){
             return "Zero";
