@@ -1,6 +1,7 @@
 class Solution {
 public:
-    vector<pair<int, string>> iew = {
+    
+    vector<pair<int, string>> mp = {
         {1000000000, "Billion"},
         {1000000, "Million"},
         {1000, "Thousand"},
@@ -33,27 +34,61 @@ public:
         {2, "Two"},
         {1, "One"},
     };
+    
+    
+    //Assume Split The Num into three part
+    // eg.->123456
+    //Part one =123
+    //Part Second= thousand,hundred,million,billion
+    //Part third=remaining part 456
     string numberToWords(int num) {
-        
         if(num==0){
             return "Zero";
         }
-        for(auto ele:iew){
+        for(auto ele:mp){
             if(ele.first<=num){
-                string a="";
-                if(num>=100){
-                    a=numberToWords(num/ele.first)+" ";
-                }
                 
+                //first part
+                string a="";
+                if(num>=100)
+                    a=numberToWords(num/ele.first)+" ";
+                
+                //middle part
                 string b=ele.second;
                 
+                //last part
                 string c="";
                 if(num%ele.first!=0){
                     c=" "+numberToWords(num%ele.first);
                 }
+                
                 return a+b+c;
             }
         }
-        return " ";
+        return "";
+        
+        /*T.C.=
+         1 = one
+         2 = Twenty three
+         123 =one hundred twenty three
+         i.e. 1 digit= less than two words
+         
+         T.C. directly proportinal to No of words
+         No. Of words directly proportinal  to No of digits
+         
+         No.of digits = ceil(log10 N)
+         
+         T.C. directly proportinal to No of digits
+         i.e. T.C. directly proportinal ceil(log10 N)
+         T.C. = O(log10 N)
+         
+         
+         S.C.=
+         Maximum Number of recursive call= No of Digit= ceil(log10 N)
+         i.e. S.C.=O(log10 N)
+         */
+        
+        
+        
     }
 };
