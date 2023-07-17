@@ -1,7 +1,6 @@
 class Solution {
 public:
-    
-    vector<pair<int, string>> mp = {
+    vector<pair<int, string>> iew = {
         {1000000000, "Billion"},
         {1000000, "Million"},
         {1000, "Thousand"},
@@ -34,38 +33,27 @@ public:
         {2, "Two"},
         {1, "One"},
     };
-    
-    
-    //Assume Split The Num into three part
-    // eg.->123456
-    //Part one =123
-    //Part Second= thousand,hundred,million,billion
-    //Part third=remaining part 456
     string numberToWords(int num) {
+        
         if(num==0){
             return "Zero";
         }
-        for(auto ele:mp){
+        for(auto ele:iew){
             if(ele.first<=num){
-                
-                //first part
                 string a="";
-                if(num>=100)
+                if(num>=100){
                     a=numberToWords(num/ele.first)+" ";
+                }
                 
-                //middle part
                 string b=ele.second;
                 
-                //last part
                 string c="";
                 if(num%ele.first!=0){
                     c=" "+numberToWords(num%ele.first);
                 }
-                
                 return a+b+c;
             }
         }
-        return "";
-        
+        return " ";
     }
 };
