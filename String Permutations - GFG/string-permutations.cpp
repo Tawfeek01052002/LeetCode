@@ -6,7 +6,7 @@ using namespace std;
 class Solution{
     public:
     //Complete this function
-    void getAllPermutation(string  str,int i,vector<string>& ans){
+    void getAllPermutation(string&  str,int i,vector<string>& ans){
         if(i<0){
             ans.push_back(str);
             return;
