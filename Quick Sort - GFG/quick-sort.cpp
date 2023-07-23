@@ -19,48 +19,43 @@ class Solution
     //Function to sort an array using quick sort algorithm.
     void quickSort(int arr[], int low, int high)
     {
-        // code here
         if(low>=high)
             return;
         
-        int pivot= partition(arr,low,high);
-        
+        int pivot=partition(arr,low,high);
         quickSort(arr,low,pivot-1);
         quickSort(arr,pivot+1,high);
-        
     }
     
     public:
     int partition (int arr[], int low, int high)
     {
-       // Your code here
-       int pivotElement=arr[low];
-       int pivotIndex=low;
-       
-       int count=0;
-       for(int i=low+1;i<=high;i++){
-           if(arr[i]<=pivotElement)
+        int pivotElement=arr[low];
+        int pivotIndex=low;
+        int count=0;
+        for(int i=low+1;i<=high;i++){
+            if(arr[i]<=pivotElement)
                 count++;
-       }
-       int rightIndex=low+count;
-       swap(arr[pivotIndex],arr[rightIndex]);
-       pivotIndex=rightIndex;
-       
-       int i=low;
-       int j=high;
-       while(i<pivotIndex && j>pivotIndex){
-            while(arr[i]<=arr[pivotIndex])
+        }
+        
+        int rightIndex=low+count;
+        swap(arr[pivotIndex],arr[rightIndex]);
+        pivotIndex=rightIndex;
+        
+        int i=low;
+        int j=high;
+        
+        while(i<pivotIndex && j>pivotIndex){
+            while(arr[i]<=pivotElement)
                 i++;
             
-            while(arr[j]>arr[pivotIndex])
+            while(arr[j]>pivotElement)
                 j--;
-                
+            
             if(i<pivotIndex && j>pivotIndex)
                 swap(arr[i],arr[j]);
-                
-                
-       }
-       return pivotIndex;
+        }
+        return pivotIndex;
     }
 };
 
