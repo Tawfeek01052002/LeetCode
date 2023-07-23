@@ -29,38 +29,31 @@ class Solution
          vector<int> right(len2);
          
          int k=l;
-         for(int i=0;i<len1;i++){
-             left[i]=arr[k++];
-         }
-         
+         for(int i=0;i<len1;i++)
+            left[i]=arr[k++];
          k=m+1;
-         for(int i=0;i<len2;i++){
-             right[i]=arr[k++];
-         }
-         
-         int i=0;
-         int j=0;
-         int start=l;
-         while(i<len1 && j<len2){
-             if(left[i]<right[j]){
-                 arr[start++]=left[i++];
-             }
-             else{
-                 arr[start++]=right[j++];
-             }
-         }
-         while(i<len1)
-            arr[start++]=left[i++];
+         for(int i=0;i<len2;i++)
+            right[i]=arr[k++];
             
+        int i=0;
+        int j=0;
+        int oi=l;
+        while(i<len1 && j<len2){
+            if(left[i]<right[j])
+                arr[oi++]=left[i++];
+            else
+                arr[oi++]=right[j++];
+        }
+        while(i<len1)
+            arr[oi++]=left[i++];
         while(j<len2)
-            arr[start++]=right[j++];
-        
+            arr[oi++]=right[j++];
+            
     }
     public:
     void mergeSort(int arr[], int l, int r)
     {
-        //code here
-        if(l==r)
+        if(l>=r)
             return;
         
         int mid=l+(r-l)/2;
