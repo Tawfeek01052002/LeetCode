@@ -6,7 +6,7 @@ using namespace std;
 class Solution
 {
 	public:
-	    void getPerm(string s,set<string>& ans,int i){
+	    void getPerm(string& s,set<string>& ans,int i){
 	        
 	        if(i>=s.length()){
 	           ans.insert(s);
@@ -19,6 +19,10 @@ class Solution
 	            
 	            //recusive call
 	            getPerm(s,ans,i+1);
+	            
+	            
+	            //BackTraking condition
+	            swap(s[i],s[j]);
 	        }
 	    }
 		vector<string> find_permutation(string S)
