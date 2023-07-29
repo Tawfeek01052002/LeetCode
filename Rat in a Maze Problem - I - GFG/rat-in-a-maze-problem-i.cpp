@@ -10,48 +10,47 @@ using namespace std;
 
 class Solution{
     public:
-    vector<string> ans;
-    void getPaths(vector<vector<int>>& m,vector<vector<bool>>& mark,int i,int j,int n,string& str){
-        //Base Condition
-        if(i<0 || j<0 || i>=n || j>=n || m[i][j]!=1 || mark[i][j]){
+    
+    void getPaths(vector<vector<int>> &m,int n,vector<vector<bool>>& visit,string& out,int i,int j,vector<string>& ans){
+        if(i<0 || j<0 || i>=n || j>=n || visit[i][j]==true || m[i][j]==0){
             return;
         }
-        mark[i][j]=true;
-        
         if(i==n-1 && j==n-1){
-            ans.push_back(str);
-            mark[i][j]=false;
+            ans.push_back(out);
             return;
         }
+        visit[i][j]=true;
         
-        //Down
-        str.push_back('D');
-        getPaths(m,mark,i+1,j,n,str);
-        str.pop_back();
+        //down move
+        out.push_back('D');
+        getPaths(m,n,visit,out,i+1,j,ans);
+        out.pop_back();
         
-        //left
-        str.push_back('L');
-        getPaths(m,mark,i,j-1,n,str);
-        str.pop_back();
+        //left move
+        out.push_back('L');
+        getPaths(m,n,visit,out,i,j-1,ans);
+        out.pop_back();
         
-        //right
-        str.push_back('R');
-        getPaths(m,mark,i,j+1,n,str);
-        str.pop_back();
+        //right move
+        out.push_back('R');
+        getPaths(m,n,visit,out,i,j+1,ans);
+        out.pop_back();
         
-        //up
-        str.push_back('U');
-        getPaths(m,mark,i-1,j,n,str);
-        str.pop_back();
+        //up move
+        out.push_back('U');
+        getPaths(m,n,visit,out,i-1,j,ans);
+        out.pop_back();
         
-        mark[i][j]=false;
+        visit[i][j]=false;
     }
+    
     vector<string> findPath(vector<vector<int>> &m, int n) {
         // Your code goes here
-        vector<vector<bool>> mark(n, vector<bool>(n, false));
-        mark[0][0]=false;
+        
+        vector<string> ans;
         string str;
-        getPaths(m,mark,0,0,n,str);
+        vector<vector<bool>> visit(n,vector<bool>(n,false));
+        getPaths(m,n,visit,str,0,0,ans);
         return ans;
     }
 };
