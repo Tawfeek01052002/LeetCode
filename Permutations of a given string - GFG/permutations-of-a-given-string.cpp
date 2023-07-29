@@ -6,35 +6,35 @@ using namespace std;
 class Solution
 {
 	public:
-	    set<string> ans;
-	    
-        void getPerm(string& s,int i,string str){
-            
-            if(i>=s.length()){
-                ans.insert(str);
-                return;
-            }
-            
-            for(int j=i;j<s.length();j++){
-                swap(s[i],s[j]);
-                getPerm(s,i+1,str+s[i]);
-                swap(s[i],s[j]);
-            }
-            
-            
-        }
-	
-		vector<string>find_permutation(string& S)
+	    void getPerm(string s,set<string>& ans,int i){
+	        
+	        if(i>=s.length()){
+	           ans.insert(s);
+	           return;
+	        }
+	        
+	        for(int j=i;j<s.length();j++){
+	            //swap
+	            swap(s[i],s[j]);
+	            
+	            //recusive call
+	            getPerm(s,ans,i+1);
+	        }
+	    }
+		vector<string> find_permutation(string S)
 		{
-		    // Code here there
-		    getPerm(S,0,"");
+		    set<string> ans;
+		    int i=0;
+		    getPerm(S,ans,i);
 		    
-		    vector<string> result;
-		    for(auto i : ans){
-		        result.push_back(i);
+		    vector<string> out;
+		    for(string ele:ans){
+		        out.push_back(ele);
 		    }
-		    sort(result.begin(),result.end());
-		    return result;
+		    
+		    sort(out.begin(),out.end());
+		    return out;
+		    
 		}
 };
 
