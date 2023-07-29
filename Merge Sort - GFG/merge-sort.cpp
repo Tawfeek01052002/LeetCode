@@ -21,38 +21,45 @@ class Solution
     public:
     void merge(int arr[], int l, int m, int r)
     {
-         // Your code here
-         int len1=m-l+1;
-         int len2=r-m;
-         
-         vector<int> left(len1);
-         vector<int> right(len2);
-         
-         int k=l;
-         for(int i=0;i<len1;i++)
+        int len1=m-l+1;
+        int len2=r-m;
+        
+        vector<int> left(len1);
+        vector<int> right(len2);
+        
+        int k=l;
+        for(int i=0;i<len1;i++){
             left[i]=arr[k++];
-         k=m+1;
-         for(int i=0;i<len2;i++)
+        }
+        
+        k=m+1;
+        for(int i=0;i<len2;i++){
             right[i]=arr[k++];
-            
+        }
+        
         int i=0;
         int j=0;
-        int oi=l;
+        int startIndex=l;
         while(i<len1 && j<len2){
-            if(left[i]<right[j])
-                arr[oi++]=left[i++];
-            else
-                arr[oi++]=right[j++];
+            if(left[i]<right[j]){
+                arr[startIndex++]=left[i++];
+            }
+            else{
+                arr[startIndex++]=right[j++];
+            }
         }
-        while(i<len1)
-            arr[oi++]=left[i++];
-        while(j<len2)
-            arr[oi++]=right[j++];
-            
+        while(i<len1){
+            arr[startIndex++]=left[i++];
+        }
+        while(j<len2){
+            arr[startIndex++]=right[j++];
+        }
+        
     }
     public:
     void mergeSort(int arr[], int l, int r)
     {
+        //code here
         if(l>=r)
             return;
         
