@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    //Using recursion
+    //Traversing through every block and try to place 1-9 value if possible then check for next block if not then backtrack
     bool isSafe(int row, int col, vector<vector<char>> &board, char value)
     {
         for (int i = 0; i < 9; i++)
