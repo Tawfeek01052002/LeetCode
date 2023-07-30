@@ -1,15 +1,22 @@
 class Solution {
 public:
-    int getXor(vector<int>& nums,int i,int xorr){
-        if(i>=nums.size())
-            return xorr;
+    
+    void getSumOfXor(vector<int>& nums,int i,int& ans,int curr){
+        if(i>=nums.size()){
+            ans=ans+curr;
+            return;
+        }
         
         //include
-        return getXor(nums,i+1,xorr^nums[i])+getXor(nums,i+1,xorr);
+        getSumOfXor(nums,i+1,ans,curr^nums[i]);
+        
+        //exclude
+        getSumOfXor(nums,i+1,ans,curr);
     }
+    
     int subsetXORSum(vector<int>& nums) {
-        int i=0;
-        int xorr=0;
-        return getXor(nums,i,xorr);
+        int ans=0;
+        getSumOfXor(nums,0,ans,0);
+        return ans;
     }
 };
