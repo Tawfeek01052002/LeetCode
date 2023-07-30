@@ -1,5 +1,8 @@
 class Solution {
 public:
+    
+    //include exclude pattern here
+    //we are include only for multiple values
     void getCombo(string& digits, vector<string>& ans,string& str,int i,vector<string>& arr){
         if(i>=digits.length()){
             ans.push_back(str);
@@ -9,6 +12,8 @@ public:
         for(int j=0;j<arr[digits[i]-'0'].length();j++){
             str.push_back(arr[digits[i]-'0'][j]);
             getCombo(digits,ans,str,i+1,arr);
+            
+            //backtrack condition
             str.pop_back();
         }
     }
