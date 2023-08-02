@@ -1,7 +1,25 @@
 class Solution {
 public:
-    //T.C.=O
+    
+    void merge(vector<int>& nums,int s,int e){
+        int totalEle=e-s+1;
+        int gap=totalEle/2+totalEle%2;
+        while(gap>0){
+            int i=s;
+            int j=s+gap;
+            while(j<=e){
+                if(nums[i]>nums[j]){
+                    swap(nums[i],nums[j]);
+                }
+                i++;
+                j++;
+            }
+            gap=gap<=1?0:(gap/2)+(gap%2);
+        }
+    }
+    /*
     void merge(vector<int>& nums,int s,int m,int e){
+        //T.C.=O(n) S.C.=O(n)
         int len1=m-s+1;
         int len2=e-m;
         
@@ -36,7 +54,9 @@ public:
             nums[k++]=right[j++];
         }
         
-    }
+        
+    }*/
+        
     void mergeSort(vector<int>& nums,int s,int e){
         if(s>=e){
             return;
@@ -44,7 +64,7 @@ public:
         int mid=s+(e-s)/2;
         mergeSort(nums,s,mid);
         mergeSort(nums,mid+1,e);
-        merge(nums,s,mid,e);
+        merge(nums,s,e);
     }
     vector<int> sortArray(vector<int>& nums) {
         int n=nums.size();
