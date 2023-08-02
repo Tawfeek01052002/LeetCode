@@ -2,6 +2,7 @@ class Solution {
 public:
     
     void merge(vector<int>& nums,int s,int e){
+        //T.C.=O() S.C.=O(1)
         int totalEle=e-s+1;
         int gap=totalEle/2+totalEle%2;
         while(gap>0){
@@ -65,6 +66,7 @@ public:
         mergeSort(nums,s,mid);
         mergeSort(nums,mid+1,e);
         merge(nums,s,e);
+        
     }
     vector<int> sortArray(vector<int>& nums) {
         int n=nums.size();
