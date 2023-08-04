@@ -1,20 +1,57 @@
 class Solution {
 public:
-    
-    //Using Sliding Window Approach 
-    //Checking is sum<0  then reset the sum and after adding
-    // element check if that sum is maximum or not
-    int maxSubArray(vector<int>& arr) {
-        
-        int n=arr.size();
-        int sum=0,max_sum=INT_MIN;
-        for(int i=0;i<n;i++){
-            if(sum<0)
-                sum=0;
-            sum+=arr[i];
-            if(sum>max_sum)
-                max_sum=sum;
+    int max(int a,int b){
+        return a>b?a:b;
+    }
+    int mergeSortApproach(vector<int>& nums,int s,int e){
+        if(s>=e){
+            return nums[s];
         }
-        return max_sum;
+        
+        int mid=s+(e-s)/2;
+        int leftSum=mergeSortApproach(nums,s,mid);
+        int rightSum=mergeSortApproach(nums,mid+1,e);
+        
+        int leftBorderedSum=0,leftMaxBorder=INT_MIN;
+        for(int i=mid;i>=s;i--){
+            leftBorderedSum+=nums[i];
+            if(leftBorderedSum>leftMaxBorder){
+                leftMaxBorder=leftBorderedSum;
+            }
+        }
+        
+        int rightBorderedSum=0,rightMaxBorder=INT_MIN;
+        for(int i=mid+1;i<=e;i++){
+            rightBorderedSum+=nums[i];
+            if(rightBorderedSum>=rightMaxBorder){
+                rightMaxBorder=rightBorderedSum;
+            }
+        }
+        
+        int totalSum=rightMaxBorder+leftMaxBorder;
+        
+        return max(leftSum,max(rightSum,totalSum));
+    }
+    int maxSubArray(vector<int>& nums) {
+        /*
+        int sum = 0;
+        int max = nums[0];
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (sum < 0)
+                sum = 0;
+            sum = sum + nums[i];
+            if (sum > max)
+                max = sum;
+        }
+        return max;
+        */
+        
+        //using D&C approach
+        //T.C.=O(nlogn)
+        int s=0;
+        int e=nums.size()-1;
+        return mergeSortApproach(nums,s,e);
+        
     }
 };
