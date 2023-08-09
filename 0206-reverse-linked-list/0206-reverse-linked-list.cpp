@@ -10,6 +10,7 @@
  */
 class Solution {
 public:
+    /*
     ListNode* reverseListHelper(ListNode*& curr,ListNode*& prev){
         //Base case
         if(curr==NULL){
@@ -22,12 +23,27 @@ public:
         return reverseListHelper(forward,curr);
         
     }
+    */
     ListNode* reverseList(ListNode* head) {
+        
+        /*
         if(head==NULL ||head->next==NULL){
             return head;
         }
         ListNode *prev= NULL;
         ListNode *curr= head;
         return reverseListHelper(curr,prev);
+        */
+    
+        // without recursion
+        ListNode * curr=head;
+        ListNode * prev=NULL;
+        while(curr!=NULL){
+            ListNode* forward=curr->next;
+            curr->next=prev;
+            prev=curr;
+            curr=forward;
+        }
+        return prev;
     }
 };
