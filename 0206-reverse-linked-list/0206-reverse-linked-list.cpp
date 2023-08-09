@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    ListNode* reverseListHelper(ListNode * &head,ListNode*& curr,ListNode*& prev){
+    ListNode* reverseListHelper(ListNode*& curr,ListNode*& prev){
         //Base case
         if(curr==NULL){
             return prev;
@@ -19,7 +19,7 @@ public:
         curr->next=prev;
         
         //recursive call
-        return reverseListHelper(head,forward,curr);
+        return reverseListHelper(forward,curr);
         
     }
     ListNode* reverseList(ListNode* head) {
@@ -28,6 +28,6 @@ public:
         }
         ListNode *prev= NULL;
         ListNode *curr= head;
-        return reverseListHelper(head,curr,prev);
+        return reverseListHelper(curr,prev);
     }
 };
