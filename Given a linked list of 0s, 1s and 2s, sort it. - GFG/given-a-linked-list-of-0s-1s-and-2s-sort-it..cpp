@@ -68,28 +68,41 @@ class Solution
                 twotail = temp;
             }
         }
-        // Joining All nodes of zero ,one,two 
-        if (zerohead->next != NULL)
+        // Joining All nodes of zero ,one,two
+        // deleting temp-head of zero,one,two
+        Node *temp1 = zerohead;
+        Node *temp2 = onehead;
+        Node *temp3 = twohead;
+        zerohead = zerohead->next;
+        onehead = onehead->next;
+        twohead = twohead->next;
+        temp1->next = NULL;
+        temp2->next = NULL;
+        temp3->next = NULL;
+        delete temp1;
+        delete temp2;
+        delete temp3;
+        if (zerohead != NULL)
         {
-            if (onehead->next != NULL)
+            if (onehead != NULL)
             {
-                zerotail->next = onehead->next;
-                onetail->next = twohead->next;
+                zerotail->next = onehead;
+                onetail->next = twohead;
             }
             else
             {
-                zerotail->next = twohead->next;
+                zerotail->next = twohead;
             }
-            return zerohead->next;
+            return zerohead;
         }
-        else if (onehead->next != NULL)
+        else if (onehead != NULL)
         {
-            onetail->next = twohead->next;
-            return onehead->next;
+            onetail->next = twohead;
+            return onehead;
         }
-        else if (twohead->next != NULL)
+        else if (twohead != NULL)
         {
-            return twohead->next;
+            return twohead;
         }
         return NULL;
     }
