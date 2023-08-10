@@ -73,18 +73,34 @@ struct Node
 /* Should return true if linked list is circular, else false */
 bool isCircular(Node *head)
 {
-   // Your code here
-   Node* slow=head;
-   Node* fast=head->next;
-   while(slow!=NULL && fast!=NULL){
-       if(slow==fast){
-           return true;
-       }
-       slow=slow->next;
-       if(fast->next==NULL){
-           return false;
-       }
-       fast=fast->next->next;
-   }
-   return false;
+    // using Tortoise Algorithm / Floyd's cycle detection algorithm
+      Node* slow=head;
+      Node* fast=head->next;
+      while(slow!=NULL && fast!=NULL){
+          if(slow==fast){
+              return true;
+          }
+          slow=slow->next;
+          if(fast->next==NULL){
+              return false;
+          }
+          fast=fast->next->next;
+      }
+      return false;
+
+
+    //using map not submitted because map is not imported
+    // map<Node *, bool> mapi;
+    // Node *temp = head;
+    // while (temp != NULL)
+    // {
+    //     auto isPresent = mapi.find(temp);
+    //     if (isPresent != mapi.end())
+    //     {
+    //         return true;
+    //     }
+    //     mapi[temp] = true;
+    //     temp = temp->next;
+    // }
+    // return false;
 }
