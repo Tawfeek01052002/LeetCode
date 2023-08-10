@@ -11,6 +11,8 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
+        
+        // without deleting the nodes
         // ListNode * curr=head;
         // ListNode * next=head;
         // while(next!=NULL){
@@ -22,6 +24,8 @@ public:
         // }
         // return head;
         
+        
+        //if we want to delete the nodes then follow below code
         if (head == NULL)
         {
             cout << "LL is empty" << endl;
