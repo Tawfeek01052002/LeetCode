@@ -11,14 +11,41 @@
 class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
-        ListNode * curr=head;
-        ListNode * next=head;
-        while(next!=NULL){
-            while(next!=NULL && curr->val==next->val){
-                next=next->next;
+        // ListNode * curr=head;
+        // ListNode * next=head;
+        // while(next!=NULL){
+        //     while(next!=NULL && curr->val==next->val){
+        //         next=next->next;
+        //     }
+        //     curr->next=next;
+        //     curr=next;
+        // }
+        // return head;
+        
+        if (head == NULL)
+        {
+            cout << "LL is empty" << endl;
+            return head;
+        }
+        if (head->next == NULL)
+        {
+            cout << "LL has only one element" << endl;
+            return head;
+        }
+        ListNode *curr = head;
+        ListNode *forward = curr->next;
+        while (curr != NULL && curr->next != NULL)
+        {
+            ListNode *forward = curr->next;
+            while (forward != NULL && curr->val == forward->val)
+            {
+                ListNode *temp = forward;
+                forward = forward->next;
+                temp->next = NULL;
+                delete temp;
             }
-            curr->next=next;
-            curr=next;
+            curr->next = forward;
+            curr = curr->next;
         }
         return head;
     }
