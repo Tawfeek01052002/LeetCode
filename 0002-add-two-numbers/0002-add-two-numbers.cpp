@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    int solve(ListNode* l1, ListNode* l2,ListNode*& anstail,int carry){
+    int solve(ListNode* &l1, ListNode* &l2,ListNode*& anstail,int carry){
         if(l1==NULL &&  l2==NULL){
             return carry;
         }
