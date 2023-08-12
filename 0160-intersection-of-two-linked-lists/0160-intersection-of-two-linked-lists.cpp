@@ -8,7 +8,7 @@
  */
 class Solution {
 public:
-    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+    ListNode *getIntersectionNode(ListNode *&headA, ListNode *&headB) {
         ListNode* a=headA;
         ListNode* b=headB;
         while(a->next!=NULL && b->next!=NULL){
@@ -20,7 +20,6 @@ public:
         }
         //b LL is bigger  find diff
         if(a->next==NULL){
-            cout<<"A -- "<<endl;
             int diff=0;
             while(b->next!=NULL){
                 diff++;
