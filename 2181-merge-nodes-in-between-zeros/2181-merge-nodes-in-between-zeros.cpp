@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    void merge(ListNode* head,ListNode*& anstail){
+    void merge(ListNode*& head,ListNode*& anstail){
         ListNode* curr=head;
         while(curr!=NULL){
             int sum=0;
