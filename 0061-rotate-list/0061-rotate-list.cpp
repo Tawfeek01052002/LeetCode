@@ -22,7 +22,7 @@ public:
         }
         return prev;
     }
-    int getLength(ListNode* head){
+    int getLength(ListNode*& head){
         int count=0;
         ListNode * temp=head;
         while(temp!=NULL){
@@ -31,7 +31,7 @@ public:
         }
         return count;
     }
-    ListNode* rotateRight(ListNode* head, int k) {
+    ListNode* rotateRight(ListNode*& head, int k) {
         int n=getLength(head);
         if(head==NULL || head->next==NULL || k==0 || k%n==0){
             return head;
