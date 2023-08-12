@@ -32,6 +32,8 @@ public:
         return count;
     }
     ListNode* rotateRight(ListNode*& head, int k) {
+       
+        /*
         int n=getLength(head);
         if(head==NULL || head->next==NULL || k==0 || k%n==0){
             return head;
@@ -58,5 +60,26 @@ public:
         fast=reverseList(fast);
         slow->next=fast;
         return head;
+        */
+        
+        int n=getLength(head);
+        if(head==NULL || head->next==NULL || k==0 || k%n==0){
+            return head;
+        }
+        ListNode* temp=head;
+        int i=1;
+        while(i<n-(k%n)){
+            temp=temp->next;
+            i++;
+        }
+        ListNode* nexthead=temp->next;
+        temp->next=NULL;
+        temp=nexthead;
+        while(temp->next!=NULL){
+            temp=temp->next;
+        }
+        temp->next=head;
+        return nexthead;
+        
     }
 };
