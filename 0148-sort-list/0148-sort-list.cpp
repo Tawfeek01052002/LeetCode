@@ -10,7 +10,7 @@
  */
 class Solution {
 public:
-    void merge(ListNode* list1, ListNode* list2,ListNode*& anstail){
+    void merge(ListNode*& list1, ListNode*& list2,ListNode*& anstail){
         while(list1!=NULL && list2!=NULL){
           if(list1->val<=list2->val){
               ListNode* temp=list1;
@@ -38,7 +38,7 @@ public:
             }
         }
     }
-    ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
+    ListNode* mergeTwoLists(ListNode*& list1, ListNode* &list2) {
         if(list1==NULL){
             return list2;
         }
@@ -53,7 +53,7 @@ public:
         merge(list1,list2,anstail);
         return anshead->next;
     }
-    ListNode* findMid(ListNode* head){
+    ListNode* findMid(ListNode*& head){
         ListNode* slow=head;
         ListNode* fast=head->next;
         while(fast!=NULL && fast->next!=NULL){
