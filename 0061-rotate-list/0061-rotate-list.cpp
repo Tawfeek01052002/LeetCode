@@ -67,8 +67,10 @@ public:
             return head;
         }
         ListNode* temp=head;
-        int i=1;
-        while(i<n-(k%n)){
+        k=k%n;
+        int newLastNodePos=n-k-1;
+        int i=0;
+        while(i<newLastNodePos){
             temp=temp->next;
             i++;
         }
