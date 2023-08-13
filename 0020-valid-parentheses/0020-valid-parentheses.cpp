@@ -11,7 +11,8 @@ public:
                 open.push(ch);
             }
             else if(!open.empty()){
-                if((ch==')' && open.top() == '(') ||(ch=='}' && open.top() == '{') ||(ch==']' && open.top() == '[')){
+                char topCh=open.top();
+                if((ch==')' && topCh == '(') ||(ch=='}' && topCh == '{') ||(ch==']' && topCh == '[')){
                     open.pop();
                 }
                 else{
