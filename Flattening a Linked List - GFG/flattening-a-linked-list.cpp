@@ -109,6 +109,7 @@ struct Node{
 };
 */
 
+//Merging two Node at a time
 Node* merge(Node* list1 ,Node* list2){
     Node* anshead=new Node(-1);
     Node* anstail=anshead;
@@ -140,24 +141,31 @@ Node* merge(Node* list1 ,Node* list2){
         return anshead->bottom;
 }
 
-/*  Function which returns the  root of 
-    the flattened linked list. */
+/*  While loop run till only one list is remaining and merging two list at a time*/
 Node *flatten(Node *root)
 {
-   // Your code here
-   if(root==NULL || root->next==NULL){
-       return root;
-   }
-   while(root->next!=NULL){
-       Node* first=root;
-       Node* second=root->next;
-       Node* forward=second->next;
-       first->next=NULL;
-       second->next=NULL;
-       first=merge(first,second);
-       root=first;
-       root->next=forward;
-   }
-   return root;
+    /*
+  if(root==NULL || root->next==NULL){
+      return root;
+  }
+  while(root->next!=NULL){
+      Node* first=root;
+      Node* second=root->next;
+      Node* forward=second->next;
+      first->next=NULL;
+      second->next=NULL;
+      first=merge(first,second);
+      root=first;
+      root->next=forward;
+  }
+  return root;
+  */
+    
+    //using recursion
+    if(root==NULL){
+        return NULL;
+    }
+    Node * lastMerge=merge(root,flatten(root->next));
+    return lastMerge;
 }
 
