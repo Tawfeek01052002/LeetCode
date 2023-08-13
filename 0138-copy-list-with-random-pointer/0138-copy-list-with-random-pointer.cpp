@@ -16,7 +16,8 @@ public:
 
 class Solution {
 public:
-    Node* helper(Node* head,unordered_map<Node*,Node*>& mapping){
+    /*
+    Node* helper0(Node* head,unordered_map<Node*,Node*>& mapping){
         if(head==NULL){
             return NULL;
         }
@@ -32,10 +33,54 @@ public:
         }
         return newNode;
     }
+    */
+    void print(Node* head){
+        while(head!=NULL){
+            cout<<head->val<<" ";
+            head=head->next;
+        }
+        cout<<endl;
+    }
     Node* copyRandomList(Node* head) {
         //mapping of old node with new node
-        unordered_map<Node*,Node*> mapping;
-        Node* newhead=helper(head,mapping);
-        return newhead;
+        // unordered_map<Node*,Node*> mapping;
+        // Node* newhead=helper0(head,mapping);
+        // return newhead;
+        
+        //without using map
+        if(head==NULL){
+            return NULL;
+        }
+        
+        //step 1:Clone nodes A->A'->B->B'....
+        Node* it=head;
+        while(it){
+            Node* clonedNode=new Node(it->val);
+            clonedNode->next=it->next;
+            it->next=clonedNode;
+            it=clonedNode->next;
+        }
+        
+        //step 2 :Assigning randoms of new node with the help of old node
+        it=head;
+        while(it){
+            Node* cloneNode =it->next;
+            cloneNode->random=it->random!=NULL?it->random->next:NULL;
+            it=cloneNode->next;
+        }
+        print(head);
+        
+        // step 3: detached A' from A 
+        it=head;
+        Node* clonedhead=it->next;
+        while(it){
+            Node* clonedNode=it->next;
+            it->next=clonedNode->next;
+            if(clonedNode->next){
+                clonedNode->next=clonedNode->next->next;
+            }
+            it = it->next;
+        }
+        return clonedhead;
     }
 };
