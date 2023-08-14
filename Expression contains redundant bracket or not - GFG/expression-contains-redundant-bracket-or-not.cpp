@@ -7,7 +7,7 @@ using namespace std;
 class Solution {
   public:
     int checkRedundancy(string str) {
-        // code here
+        // use stack and pushing only '(' and operator and then check
         stack<char> s;
         for(int i=0;i<str.size();i++){
             char ch=str[i];
