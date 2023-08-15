@@ -5,6 +5,8 @@ public:
     }
     
     void push(int val) {
+        
+        /*
         if(arr.empty()){
             arr.push_back({val,val});
             return;
@@ -13,6 +15,18 @@ public:
 
         arr.push_back({val,min});
         return;
+        */
+        if(arr.empty()){
+            pair<int,int> p=make_pair(val,val);
+            arr.push_back(p);
+        }
+        else{
+            pair<int,int>p;
+            p.first=val;
+            p.second=min(val,arr.back().second);
+            arr.push_back(p);
+        }
+        
     }
     
     void pop() {
@@ -26,14 +40,16 @@ public:
         if(arr.empty()){
             return -1;
         }
-        return arr[arr.size() - 1].first;
+        // return arr[arr.size() - 1].first;
+        return arr.back().first;
     }
     
     int getMin() {
         if(arr.empty()){
             return -1;
         }
-        return arr[arr.size()-1].second;
+        // return arr[arr.size()-1].second;
+        return arr.back().second;
     }
 };
 
