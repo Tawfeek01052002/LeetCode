@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //using recursion with stack
     void removePara(string& str,stack<char>& s,int& i,string& ans){
         if(i>=str.length()){
             return;
