@@ -1,16 +1,31 @@
 class Solution {
 public:
+    
+    //this question can be done using the stack or string push_back & pop_back()
     string removeDuplicates(string str) {
-        stack<char> s;
         
+        //using string
+        
+        int n=str.length();
+        string ans="";
+        for(int i=0;i<n;i++){
+            if(ans.size()>0 && ans[ans.size()-1]==str[i])
+                ans.pop_back();
+            else
+                ans.push_back(str[i]);
+        }
+        return ans;
+        
+        
+        //using stack
+        /*
+        stack<char> s;
         for(int i=str.length()-1;i>=0;i--){
             char ch=str[i];
-            if(s.empty() || s.top()!=ch){
+            if(s.empty() || s.top()!=ch)
                 s.push(ch);
-            }
-            else{
+            else
                 s.pop();
-            }
         }
         string out;
         while(!s.empty()){
@@ -18,5 +33,9 @@ public:
             s.pop();
         }
         return out;
+        */
+        
+        
+        
     }
 };
