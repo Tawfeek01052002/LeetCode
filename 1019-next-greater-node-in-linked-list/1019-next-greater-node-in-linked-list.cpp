@@ -58,35 +58,45 @@ public:
         */
         
         
-        //also recommended if interviewer told to do not modify the LL
+         // also recommended if interviewer told that do not modify the LL
         vector<int> ll;
-        ListNode* temp=head;
-        //copying data into array for processing
-        while(temp){
+        ListNode *temp = head;
+        // copying data into array for processing
+        while (temp)
+        {
             ll.push_back(temp->val);
-            temp=temp->next;
+            temp = temp->next;
         }
-        
-        //creating stack to store indexes
+
+        // creating stack to store indexes
         stack<int> s;
-        
-        int n=ll.size();
-        
-        //vector to store ans
-        vector<int> ans(n);
-        
-        for(int i=0;i<n;i++){
-            if(s.empty() || ll[s.top()]>=ll[i]){
+
+        int n = ll.size();
+
+        // vector to store ans or use ll list created as previous(as below code)
+        // vector<int> ans(n, 0);
+
+        for (int i = 0; i < n; i++)
+        {
+            if (s.empty() || ll[s.top()] >= ll[i])
+            {
                 s.push(i);
             }
-            else{
-                while(!s.empty() && ll[s.top()]<ll[i]){
-                    ans[s.top()]=ll[i];
+            else
+            {
+                while (!s.empty() && ll[s.top()] < ll[i])
+                {
+                    ll[s.top()] = ll[i];
                     s.pop();
                 }
                 s.push(i);
             }
         }
-        return ans; 
+
+        while(!s.empty()){
+            ll[s.top()]=0;
+            s.pop();
+        }
+        return ll;
     }
 };
