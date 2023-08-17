@@ -24,6 +24,7 @@ public:
         }
         return prev;
     }
+    // T.C.=O(n) //S.C.=O(1)(without answer vector)
     vector<int> nextLargerNodes(ListNode* head) {
         
         /* Good Solution (solve by me -Recommended in interview)
