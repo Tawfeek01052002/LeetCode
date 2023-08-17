@@ -25,6 +25,8 @@ public:
         return prev;
     }
     vector<int> nextLargerNodes(ListNode* head) {
+        
+        /* Good Solution (solve by me -Recommended in interview)
         //reversing the list to process previous part
         head=reverseList(head);
         
@@ -52,6 +54,39 @@ public:
         //reverse ans
         reverse(ans.begin(),ans.end());
         return ans;
+        
+        */
+        
+        vector<int> ll;
+        ListNode* temp=head;
+        //copying data into array for processing
+        while(temp){
+            ll.push_back(temp->val);
+            temp=temp->next;
+        }
+        
+        //creating stack to store indexes
+        stack<int> s;
+        
+        int n=ll.size();
+        
+        //vector to store ans
+        vector<int> ans(n);
+        
+        for(int i=0;i<n;i++){
+            if(s.empty() || ll[s.top()]>=ll[i]){
+                s.push(i);
+            }
+            else{
+                while(!s.empty() && ll[s.top()]<ll[i]){
+                    ans[s.top()]=ll[i];
+                    s.pop();
+                }
+                s.push(i);
+            }
+        }
+        return ans;
+        
         
     }
 };
