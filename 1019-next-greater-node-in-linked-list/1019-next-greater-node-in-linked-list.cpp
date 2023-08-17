@@ -57,6 +57,8 @@ public:
         
         */
         
+        
+        //also recommended if interviewer told to do not modify the LL
         vector<int> ll;
         ListNode* temp=head;
         //copying data into array for processing
@@ -85,8 +87,6 @@ public:
                 s.push(i);
             }
         }
-        return ans;
-        
-        
+        return ans; 
     }
 };
