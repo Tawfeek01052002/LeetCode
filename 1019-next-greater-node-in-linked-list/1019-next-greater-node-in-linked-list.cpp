@@ -25,10 +25,17 @@ public:
         return prev;
     }
     vector<int> nextLargerNodes(ListNode* head) {
+        //reversing the list to process previous part
         head=reverseList(head);
+        
+        //store ans in reverse order
         vector<int> ans;
+        
+        //use stack to get greater number
         stack<ListNode*> s;
+        
         ListNode* temp=head;
+        //traversing the list
         while(temp!=NULL){
             while(!s.empty() && s.top()->val<=temp->val){
                 s.pop();
@@ -42,6 +49,7 @@ public:
             s.push(temp);
             temp=temp->next;
         }
+        //reverse ans
         reverse(ans.begin(),ans.end());
         return ans;
         
