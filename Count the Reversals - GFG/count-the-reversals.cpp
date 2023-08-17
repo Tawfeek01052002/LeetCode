@@ -17,6 +17,11 @@ int main()
 // } Driver Code Ends
 
 
+
+//Intutuion = cancel valid paranthesis using stack 
+// if }{ == count+2
+// if {{ || }}  == count+1
+
 int countRev (string str)
 {
     int n=str.length();
