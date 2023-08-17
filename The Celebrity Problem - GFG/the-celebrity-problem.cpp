@@ -11,6 +11,7 @@ class Solution
 {
     public:
     //Function to find if there is a celebrity in the party or not.
+    // T.C.=O(n)
     int celebrity(vector<vector<int> >& M, int n) 
     {
         stack<int> s;
