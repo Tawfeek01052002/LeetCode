@@ -65,18 +65,11 @@ public:
         int col=matrix[0].size();
         vector<int> arr(col,0);
         int maxArea=0;
-        int currRow=0;
-        while(currRow<rows){
+        for(int j=0;j<rows;j++){
             for(int i=0;i<col;i++){
-                if(matrix[currRow][i]=='1'){
-                    arr[i]++;
-                }
-                else{
-                    arr[i]=0;
-                }
+                arr[i]=matrix[j][i]=='1'?arr[i]+1:0;
             }
             maxArea=max(maxArea,largestRectangleArea(arr));
-            currRow++;
         }
         return maxArea;
     }
