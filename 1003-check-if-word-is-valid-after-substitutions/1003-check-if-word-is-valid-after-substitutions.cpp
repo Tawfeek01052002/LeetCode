@@ -13,6 +13,9 @@ public:
         return s.size()==0?true:false;
         
         */
+        
+        
+        // T.C.=O(n) S.C.=O(n)
         if(str[0]!='a') return false;
         
         stack<char> s;
