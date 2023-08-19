@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //Repeat Question Not Understand
     vector<double> getCollisionTimes(vector<vector<int>>& cars) {
         vector<double> ans(cars.size(),-1);
         
