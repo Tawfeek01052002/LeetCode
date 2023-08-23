@@ -5,10 +5,12 @@ public:
         
     }
     
+    // O(1)
     void push(int x) {
         s1.push(x);
     }
     
+    // O(n)
     int pop() {
         int x=-1;
         if(s2.empty()){
@@ -24,6 +26,7 @@ public:
         return x;
     }
     
+    // O(n)
     int peek() {
         int x=-1;
         if(s2.empty()){
@@ -38,6 +41,7 @@ public:
         return x;
     }
     
+    // O(1)
     bool empty() {
         return s1.empty() && s2.empty();
     }
