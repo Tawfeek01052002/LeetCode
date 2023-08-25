@@ -11,6 +11,8 @@
  */
 class Solution {
 public:
+    
+    //height of the node
     int heightOfTree(TreeNode* root){
         if(root==NULL){
             return 0;
@@ -31,6 +33,7 @@ public:
         
         bool ans=abs(leftTree-rightTree)<=1;
         
+        //recursive call for all node
         return ans && isBalanced(root->left) && isBalanced(root->right);
     }
 };
