@@ -12,6 +12,8 @@
 class Solution {
 public:
     bool isSameTree(TreeNode* p, TreeNode* q) {
+        
+        //Using Recursion
         if(p==NULL && q==NULL){
             return true;
         }
@@ -24,5 +26,6 @@ public:
         else{
             return false;
         }
+        
     }
 };
