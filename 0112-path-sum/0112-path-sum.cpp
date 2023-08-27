@@ -11,7 +11,7 @@
  */
 class Solution {
 public:
-    bool Solve(TreeNode* root,int& target,int currSum){
+    bool Solve(TreeNode* root,int& target,int& currSum){
         if(root==NULL){
             return false;
         }
@@ -20,9 +20,12 @@ public:
             if(target==currSum){
                 return true;
             }
+            currSum-=root->val;
             return false;
         }
-        return Solve(root->left,target,currSum) || Solve(root->right,target,currSum);
+        bool ans= Solve(root->left,target,currSum) || Solve(root->right,target,currSum);
+        currSum-=root->val;
+        return ans;
     }
     bool hasPathSum(TreeNode* root, int targetSum) {
         int currSum=0;
