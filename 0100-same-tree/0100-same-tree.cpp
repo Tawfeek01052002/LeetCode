@@ -27,6 +27,8 @@ public:
         //     return false;
         // }
         
+        
+        //Revise
         if(p==NULL && q==NULL){
             return true;
         }
