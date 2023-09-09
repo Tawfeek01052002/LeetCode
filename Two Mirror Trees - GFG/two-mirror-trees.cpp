@@ -89,24 +89,19 @@ struct Node
 class Solution
 {
     public:
-    int areMirror(Node* r1, Node* r2) {
+    int areMirror(Node* a, Node* b) {
     // Your code here
-        if (r1 == NULL && r2 == NULL)
-        {
-            return true;
-        }
-        if ((r1 == NULL && r2 != NULL) || (r2 == NULL && r1 != NULL))
-        {
-            return false;
-        }
-        if (r1->data == r2->data)
-        {
-            return areMirror(r1->left, r2->right) && areMirror(r1->right, r2->left);
-        }
-        else
-        {
-            return false;
-        }
+    
+    if(a==NULL && b==NULL){
+        return true;
+    }
+    else if((a==NULL && b!=NULL) ||(a!=NULL && b==NULL)){
+        return false;
+    }
+    else if(a->data==b->data){
+        return areMirror(a->left,b->right) && areMirror(a->right,b->left);
+    }
+    return false;
     }
 
 };
