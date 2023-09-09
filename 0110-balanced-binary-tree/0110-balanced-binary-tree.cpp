@@ -21,7 +21,6 @@ public:
     }
     bool isBalanced(TreeNode* root) {
         
-        
         //Base case
         if(root==NULL){
             return true;
@@ -35,5 +34,7 @@ public:
         
         //recursive call for all node
         return ans && isBalanced(root->left) && isBalanced(root->right);
+        
+        
     }
 };
