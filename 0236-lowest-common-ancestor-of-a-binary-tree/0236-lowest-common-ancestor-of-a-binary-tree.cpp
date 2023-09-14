@@ -11,37 +11,36 @@ class Solution {
 public:
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
         
-        //Base case
+        
+        //base Case
         if(root==NULL){
             return NULL;
         }
         
-        //check that node == p || node== q (data)
-        if(root->val == p->val){
+        //check that curr node is p  or q
+        if(p->val==root->val){
             return p;
         }
-        if(root->val == q->val){
-           return q; 
+        
+        if(q->val==root->val){
+            return q;
         }
         
-        //both node may be on left subtree
-        TreeNode* leftTree=lowestCommonAncestor(root->left,p,q);
+        TreeNode* leftAns=lowestCommonAncestor(root->left,p,q);
+        TreeNode* rightAns=lowestCommonAncestor(root->right,p,q);
         
-        //both node may be on right subtree
-        TreeNode* rightTree=lowestCommonAncestor(root->right,p,q);
-        
-        //check that node is present on one the side based on that returning the value
-        if(leftTree==NULL && rightTree==NULL){
+        if(leftAns==NULL && rightAns==NULL){
             return NULL;
         }
-        else if(leftTree==NULL &&  rightTree!=NULL){
-            return rightTree;
+        else if(leftAns!=NULL && rightAns==NULL){
+            return leftAns;
         }
-        else if(leftTree!=NULL && rightTree==NULL){
-            return leftTree;
+        else if(leftAns==NULL && rightAns!=NULL){
+            return rightAns;
         }
         else{
             return root;
         }
+        return NULL; 
     }
 };
