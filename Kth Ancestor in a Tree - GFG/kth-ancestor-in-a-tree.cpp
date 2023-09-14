@@ -111,16 +111,16 @@ struct Node
 };
 */
 // your task is to complete this function
-bool Solve(Node* root,int& k,int node,int& ans){
-    //Base Case
+bool solve(Node* root,int& k,int node,int& ans){
     if(root==NULL){
         return false;
     }
     if(root->data==node){
         return true;
     }
-    bool left=Solve(root->left,k,node,ans);
-    bool right=Solve(root->right,k,node,ans);
+    
+    int left=solve(root->left,k,node,ans);
+    int right=solve(root->right,k,node,ans);
     
     if(left || right){
         k--;
@@ -128,13 +128,12 @@ bool Solve(Node* root,int& k,int node,int& ans){
             ans=root->data;
         }
         return true;
-        
     }
     return false;
 }
 int kthAncestor(Node *root, int k, int node)
 {
     int ans=-1;
-    Solve(root,k,node,ans);
+    solve(root,k,node,ans);
     return ans;
 }
