@@ -11,15 +11,7 @@
  */
 class Solution {
 public:
-    int found(vector<int>& inorder,int data,int inStart,int inEnd){
-        for(int i=inStart;i<=inEnd;i++){
-            if(inorder[i]==data){
-                return i;
-            }
-        }
-        return -1;
-    }
-    TreeNode* buildTreeHelper(vector<int>& inorder,vector<int>& postorder,int& postIndex,int inStart,int inEnd){
+    TreeNode* buildTreeHelper(vector<int>& inorder,vector<int>& postorder,int& postIndex,int inStart,int inEnd,unordered_map<int,int>& m){
         //Base Case
         if(postIndex<0 || inStart>inEnd){
             return NULL;
@@ -29,19 +21,27 @@ public:
         
         TreeNode* root=new TreeNode(ele);
         
-        int pos=found(inorder,ele,inStart,inEnd);
+        int pos=m[ele];
         
-        root->right=buildTreeHelper(inorder,postorder,postIndex,pos+1,inEnd);
+        root->right=buildTreeHelper(inorder,postorder,postIndex,pos+1,inEnd,m);
         
-        root->left=buildTreeHelper(inorder,postorder,postIndex,inStart,pos-1);
+        root->left=buildTreeHelper(inorder,postorder,postIndex,inStart,pos-1,m);
         
         return root;
         
     }
+    
+    void mapping(unordered_map<int,int>& m,vector<int>& inorder){
+            for(int i=0;i<inorder.size();i++){
+                m[inorder[i]]=i;
+            }
+    }
     TreeNode* buildTree(vector<int>& inorder, vector<int>& postorder) {
+        unordered_map<int,int> m;
+        mapping(m,inorder);
         int postIndex=inorder.size()-1;
         int inStart=0;
         int inEnd=inorder.size()-1;
-        return buildTreeHelper(inorder,postorder,postIndex,inStart,inEnd);
+        return buildTreeHelper(inorder,postorder,postIndex,inStart,inEnd,m);
     }
 };
