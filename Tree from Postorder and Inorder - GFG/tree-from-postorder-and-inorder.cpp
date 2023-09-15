@@ -65,19 +65,13 @@ struct Node
 };*/
 
 //Function to return a tree created from postorder and inoreder traversals.
-int getPosi(int inorder[], int data, int inorderStart, int inorderEnd)
-{
-
-    for (int i = inorderStart; i <= inorderEnd; i++)
-    {
-        if (inorder[i] == data)
-        {
-            return i;
+std::unordered_map<int,int> m;
+void mapping(int inorder[],int n){
+        for(int i=0;i<n;i++){
+            m[inorder[i]]=i;
         }
-    }
-    return -1;
 }
-Node *buildTreeFromInOrderAndPostorder(int inorder[], int postorder[], int &size, int &postIndex, int inorderStart, int inorderEnd)
+Node *buildTreeFromInOrderAndPostorder(int inorder[], int postorder[], int size, int &postIndex, int inorderStart, int inorderEnd)
 {
     // Base case
     if (postIndex < 0 || inorderStart > inorderEnd)
@@ -91,7 +85,7 @@ Node *buildTreeFromInOrderAndPostorder(int inorder[], int postorder[], int &size
     Node *root = new Node(ele);
 
     // find Position in inorder array
-    int pos = getPosi(inorder, ele, inorderStart, inorderEnd);
+    int pos = m[ele];
 
     // recursive call
     root->right = buildTreeFromInOrderAndPostorder(inorder, postorder, size, postIndex, pos + 1, inorderEnd);
@@ -100,6 +94,7 @@ Node *buildTreeFromInOrderAndPostorder(int inorder[], int postorder[], int &size
     return root;
 }
 Node *buildTree(int in[], int post[], int n) {
+    mapping(in,n);
     int postIndex = n - 1;
     int inorderStart = 0;
     int inorderEnd = n - 1;
