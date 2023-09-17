@@ -133,6 +133,7 @@ void solve(Node* root,int hd,map<int,vector<int>>& mp){
 }
 vector<int> diagonal(Node *root)
 {
+    /* Slow Algo
    map<int,vector<int>> mp;
    int hd=0;
    solve(root,hd,mp);
@@ -145,4 +146,28 @@ vector<int> diagonal(Node *root)
         }
     }
    return ans;
+   */
+   
+   /*Fast algo*/
+   vector<int> ans;
+   
+   if(root==NULL) return ans;
+   
+   queue<Node*> q;
+   q.push(root);
+   while(!q.empty()){
+       Node* temp=q.front();
+       q.pop();
+       
+       while(temp!=NULL){
+           ans.push_back(temp->data);
+           
+           if(temp->left!=NULL){
+               q.push(temp->left);
+           }
+           temp=temp->right;
+       }
+   }
+   return ans;
+   
 }
