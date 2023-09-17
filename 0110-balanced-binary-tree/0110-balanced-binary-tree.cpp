@@ -13,27 +13,22 @@ class Solution {
 public:
     
     //height of the node
+    bool ans=true;
     int heightOfTree(TreeNode* root){
         if(root==NULL){
             return 0;
         }
-        return max(heightOfTree(root->left),heightOfTree(root->right))+1;
+        int lh=heightOfTree(root->left);
+        int rh=heightOfTree(root->right);
+        
+        if(abs(lh-rh)>1){
+            ans=ans && false;
+        }
+        return max(lh,rh)+1;
     }
     bool isBalanced(TreeNode* root) {
-        
-        //Base case
-        if(root==NULL){
-            return true;
-        }
-        
-        //1 Case
-        int leftTree=heightOfTree(root->left);
-        int rightTree=heightOfTree(root->right);
-        
-        bool ans=abs(leftTree-rightTree)<=1;
-        
-        //recursive call for all node
-        return ans && isBalanced(root->left) && isBalanced(root->right);
+        heightOfTree(root);
+        return ans;
         
         
     }
