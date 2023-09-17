@@ -21,14 +21,13 @@ public:
         while(!q.empty()){
             int lvl=q.size();
             vector<int> inner(lvl);
-            int index=0;
-            while(lvl-->0){
+            for(int i=0;i<lvl;i++){
                 TreeNode* temp=q.front(); q.pop();
                 
                 if(flag==true)
-                    inner[index++]=temp->val;
+                    inner[i]=temp->val;
                 else
-                    inner[lvl]=temp->val;
+                    inner[lvl-i-1]=temp->val;
                 
                 if(temp->left!=NULL){
                     q.push(temp->left);
