@@ -22,10 +22,10 @@ public:
             auto front=q.front();
             q.pop();
             
-            TreeNode*& node=front.first;
-            auto& cor=front.second;
-            int& row=cor.first;
-            int& col=cor.second;
+            TreeNode* node=front.first;
+            auto cor=front.second;
+            int row=cor.first;
+            int col=cor.second;
             
             m[col][row].insert(node->val);
             
@@ -39,10 +39,10 @@ public:
         }
         
         for(auto it:m){
-            auto& colmap=it.second;
+            auto colmap=it.second;
             vector<int>vLine;
             for(auto colmapit:colmap){
-                auto& mset=colmapit.second;
+                auto mset=colmapit.second;
                 vLine.insert(vLine.end(),mset.begin(),mset.end());
             }
             ans.push_back(vLine);
